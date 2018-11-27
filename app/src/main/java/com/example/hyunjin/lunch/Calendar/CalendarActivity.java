@@ -1,7 +1,9 @@
 package com.example.hyunjin.lunch.Calendar;
 
+import android.app.Dialog;
+import android.content.Context;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
+import android.support.annotation.NonNull;
 
 import com.example.hyunjin.lunch.R;
 import com.prolificinteractive.materialcalendarview.CalendarDay;
@@ -12,8 +14,12 @@ import org.threeten.bp.DayOfWeek;
 
 import java.util.Calendar;
 
-public class CalendarActivity extends AppCompatActivity {
+public class CalendarActivity extends Dialog {
     private MaterialCalendarView CalendarView;
+
+    public CalendarActivity(@NonNull Context context) {
+        super(context);
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

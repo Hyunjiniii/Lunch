@@ -2,16 +2,21 @@ package com.example.hyunjin.lunch;
 
 import android.app.ActionBar;
 import android.app.ProgressDialog;
+import android.graphics.Point;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.view.Display;
 import android.view.View;
+import android.view.Window;
 import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.example.hyunjin.lunch.Calendar.CalendarActivity;
 
 import java.io.PrintWriter;
 import java.io.StringWriter;
@@ -28,6 +33,7 @@ public class MainActivity extends AppCompatActivity implements Runnable {
     private int month;
     private int day;
     private String nowDate;
+    private TextView date;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,6 +44,7 @@ public class MainActivity extends AppCompatActivity implements Runnable {
 
         minus_date = (ImageButton) findViewById(R.id.main_minus_date_btn);
         plus_date = (ImageButton) findViewById(R.id.main_plus_date_btn);
+        date = (TextView) findViewById(R.id.main_date_text);
 
         minus_date.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -64,6 +71,25 @@ public class MainActivity extends AppCompatActivity implements Runnable {
                     plus_date.setVisibility(View.VISIBLE);
                     minus_date.setVisibility(View.VISIBLE);
                 }
+            }
+        });
+
+        date.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                CalendarActivity calendarDialog = new CalendarActivity(MainActivity.this);
+                calendarDialog.show();
+
+                Display display = getWindowManager().getDefaultDisplay();
+                Point size = new Point();
+                display.getSize(size);
+
+                Window window = calendarDialog.getWindow();
+
+                int x = (int)(size.x * 1.0f);
+                int y = (int)(size.y * 0.7f);
+
+                window.setLayout(x, y);
             }
         });
 
