@@ -125,17 +125,14 @@ public class MainActivity extends AppCompatActivity {
         @Override
         public void onFinish(long result) {
             // 급식을 가져오는 코드를 여기에 작성하세요
-//            if (result  == -1) {
-                pd.dismiss();
-//            }
-
+            pd.dismiss();
 
         }
     }
 
     private void setResult(int year, int month, int day) {
         this.year = year;
-        this.month = month;
+        this.month = month - 1;
         this.day = day;
 
         date_click = true;
@@ -152,6 +149,11 @@ public class MainActivity extends AppCompatActivity {
         ((TextView) findViewById(R.id.main_date_text)).setText(mData.Calender);
         ((TextView) findViewById(R.id.main_meal_text)).setText(mData.Lunch);
         ((TextView) findViewById(R.id.main_etc_text)).setText("칼로리 수치:"+ mData.Kcal + "kcal");
+
+        if (mData.Lunch.equals("")) {
+            ((TextView) findViewById(R.id.main_meal_text)).setText("급식이 없습니다.");
+            ((TextView) findViewById(R.id.main_etc_text)).setText(" ");
+        }
     }
 
 
