@@ -6,6 +6,7 @@ import android.content.Context;
 import android.graphics.Point;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.Display;
 import android.view.View;
 import android.view.Window;
@@ -153,6 +154,10 @@ public class MainActivity extends AppCompatActivity {
         if (mData.Lunch.equals("")) {
             ((TextView) findViewById(R.id.main_meal_text)).setText("급식이 없습니다.");
             ((TextView) findViewById(R.id.main_etc_text)).setText(" ");
+        }
+
+        else if (mData.Lunch == null) {
+            Log.d("Lunch_null", "Fuck");
         }
     }
 
