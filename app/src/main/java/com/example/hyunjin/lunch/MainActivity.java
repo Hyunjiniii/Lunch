@@ -6,7 +6,6 @@ import android.content.Context;
 import android.graphics.Point;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.Display;
 import android.view.View;
 import android.view.Window;
@@ -15,6 +14,8 @@ import android.widget.TextView;
 
 import com.example.hyunjin.lunch.Calendar.CalendarActivity;
 import com.example.hyunjin.lunch.Calendar.ReturnValue;
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
 
 import java.util.Calendar;
 
@@ -42,10 +43,15 @@ public class MainActivity extends AppCompatActivity {
         plus_date = (ImageButton) findViewById(R.id.main_plus_date_btn);
         date = (TextView) findViewById(R.id.main_date_text);
 
+        AdView mAdView = (AdView) findViewById(R.id.adView);
+        AdRequest adRequest = new AdRequest.Builder()
+                .addTestDevice(AdRequest.DEVICE_ID_EMULATOR)
+                .build();
+        mAdView.loadAd(adRequest);
+
         Calendar m = Calendar.getInstance();
 
         maxDay = m.getMaximum(Calendar.DAY_OF_MONTH);
-        Log.d("maxDay", String.valueOf(maxDay));
 
         if (!date_click) {
             year = m.get(Calendar.YEAR);
@@ -142,7 +148,7 @@ public class MainActivity extends AppCompatActivity {
         startProcess();
     }
 
-    private void setBtnDate (int year, int month, int day) {
+    private void setBtnDate(int year, int month, int day) {
         this.year = year;
         this.month = month;
         this.day = day;
@@ -159,7 +165,7 @@ public class MainActivity extends AppCompatActivity {
         BapTool.restoreBapDateClass mData = BapTool.restoreBapData(getApplicationContext(), year, month, day);
         ((TextView) findViewById(R.id.main_date_text)).setText(mData.Calender);
         ((TextView) findViewById(R.id.main_meal_text)).setText(mData.Lunch);
-        ((TextView) findViewById(R.id.main_etc_text)).setText("칼로리 수치:"+ mData.Kcal + "kcal");
+        ((TextView) findViewById(R.id.main_etc_text)).setText("칼로리 수치:" + mData.Kcal + "kcal");
 
         if (mData.Lunch == null || mData.Lunch.equals("")) {
             ((TextView) findViewById(R.id.main_meal_text)).setText("급식이 없습니다.");
