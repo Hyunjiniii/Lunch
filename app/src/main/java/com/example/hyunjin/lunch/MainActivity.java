@@ -22,13 +22,12 @@ public class MainActivity extends AppCompatActivity {
     ProcessTask p;
     BapDownloadTask mProcessTask;
     private android.app.ProgressDialog pd;
-    private int num;
     private ImageButton minus_date;
     private ImageButton plus_date;
     private int year;
     private int month;
     private int day;
-    private String nowDate;
+    private int maxDay;
     private TextView date;
     private boolean date_click = false;
 
@@ -45,39 +44,42 @@ public class MainActivity extends AppCompatActivity {
 
         Calendar m = Calendar.getInstance();
 
+        maxDay = m.getMaximum(Calendar.DAY_OF_MONTH);
+        Log.d("maxDay", String.valueOf(maxDay));
+
         if (!date_click) {
             year = m.get(Calendar.YEAR);
             month = m.get(Calendar.MONTH);
             day = m.get(Calendar.DATE);
         }
 
-//        minus_date.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                num -= 1;
-//                setData(num);
-//                if (num == 0)
-//                    minus_date.setVisibility(View.GONE);
-//                else {
-//                    minus_date.setVisibility(View.VISIBLE);
-//                    plus_date.setVisibility(View.VISIBLE);
-//                }
-//            }
-//        });
-//
-//        plus_date.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                num += 1;
-//                setData(num);
-//                if (num == 6)
-//                    plus_date.setVisibility(View.GONE);
-//                else {
-//                    plus_date.setVisibility(View.VISIBLE);
-//                    minus_date.setVisibility(View.VISIBLE);
-//                }
-//            }
-//        });
+        minus_date.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Calendar m = Calendar.getInstance();
+                plus_date.setVisibility(View.VISIBLE);
+                day -= 1;
+                if (day <= 0) {
+                    day = m.get(Calendar.DATE);
+                    minus_date.setVisibility(View.GONE);
+                }
+                setBtnDate(year, month, day);
+
+            }
+        });
+
+        plus_date.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Calendar m = Calendar.getInstance();
+                minus_date.setVisibility(View.VISIBLE);
+                day += 1;
+                if (day >= maxDay) {
+                    plus_date.setVisibility(View.GONE);
+                }
+                setBtnDate(year, month, day);
+            }
+        });
 
         date.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -86,7 +88,7 @@ public class MainActivity extends AppCompatActivity {
                 calendarDialog.setReturnValue(new ReturnValue() {
                     @Override
                     public void value(int year, int month, int day) {
-                        setResult(year, month, day);
+                        setCalendarDate(year, month, day);
                     }
                 });
                 calendarDialog.show();
@@ -131,12 +133,20 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    private void setResult(int year, int month, int day) {
+    private void setCalendarDate(int year, int month, int day) {
         this.year = year;
         this.month = month - 1;
         this.day = day;
 
         date_click = true;
+        startProcess();
+    }
+
+    private void setBtnDate (int year, int month, int day) {
+        this.year = year;
+        this.month = month;
+        this.day = day;
+
         startProcess();
     }
 
@@ -151,14 +161,12 @@ public class MainActivity extends AppCompatActivity {
         ((TextView) findViewById(R.id.main_meal_text)).setText(mData.Lunch);
         ((TextView) findViewById(R.id.main_etc_text)).setText("칼로리 수치:"+ mData.Kcal + "kcal");
 
-        if (mData.Lunch.equals("")) {
+        if (mData.Lunch == null || mData.Lunch.equals("")) {
             ((TextView) findViewById(R.id.main_meal_text)).setText("급식이 없습니다.");
             ((TextView) findViewById(R.id.main_etc_text)).setText(" ");
+            pd.dismiss();
         }
 
-        else if (mData.Lunch == null) {
-            Log.d("Lunch_null", "Fuck");
-        }
     }
 
 

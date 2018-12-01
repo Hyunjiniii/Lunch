@@ -18,7 +18,7 @@ public abstract class ProcessTask extends AsyncTask<Integer, Integer, Long> {
     final String schulCrseScCode = "4"; // 학교 종류 코드 1
     final String schulKndScCode = "04"; // 학교 종류 코드 2
 
-    String[] Calender, Morning, Lunch, Dinner, Kcal;
+    String[] Calender, Lunch, Kcal;
 
     public abstract void onPreDownload();
 
@@ -63,20 +63,14 @@ public abstract class ProcessTask extends AsyncTask<Integer, Integer, Long> {
 
             publishProgress(50);
 
-            Morning = com.example.hyunjin.lunch.MealLibrary.getMealNew(CountryCode, schulCode,
-                    schulCrseScCode, schulKndScCode, "2", year, month, day);
-
             Lunch = com.example.hyunjin.lunch.MealLibrary.getMealNew(CountryCode, schulCode,
                     schulCrseScCode, schulKndScCode, "2", year, month, day);
 
             publishProgress(75);
 
-            Dinner = com.example.hyunjin.lunch.MealLibrary.getMealNew(CountryCode, schulCode,
-                    schulCrseScCode, schulKndScCode, "3", year, month, day);
-
             Kcal = MealLibrary.getKcalNew(CountryCode, schulCode, schulCrseScCode, schulKndScCode, "2", year, month, day);
 
-            BapTool.saveBapData(mContext, Calender, Morning, Lunch, Dinner, Kcal);
+            BapTool.saveBapData(mContext, Calender, Lunch, Kcal);
 
             publishProgress(100);
 
