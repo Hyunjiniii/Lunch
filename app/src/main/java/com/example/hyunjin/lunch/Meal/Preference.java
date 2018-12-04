@@ -1,4 +1,4 @@
-package com.example.hyunjin.lunch;
+package com.example.hyunjin.lunch.Meal;
 
 import android.content.Context;
 import android.content.SharedPreferences;

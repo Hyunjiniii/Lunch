@@ -1,4 +1,4 @@
-package com.example.hyunjin.lunch;
+package com.example.hyunjin.lunch.Meal;
 import net.htmlparser.jericho.Element;
 import net.htmlparser.jericho.Source;
 

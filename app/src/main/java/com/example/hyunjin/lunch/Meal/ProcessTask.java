@@ -1,4 +1,4 @@
-package com.example.hyunjin.lunch;
+package com.example.hyunjin.lunch.Meal;
 
 import android.content.Context;
 import android.os.AsyncTask;
@@ -58,12 +58,12 @@ public abstract class ProcessTask extends AsyncTask<Integer, Integer, Long> {
         publishProgress(35);
 
         try {
-            Calender = com.example.hyunjin.lunch.MealLibrary.getDateNew(CountryCode, schulCode,
+            Calender = MealLibrary.getDateNew(CountryCode, schulCode,
                     schulCrseScCode, schulKndScCode, "2", year, month, day);
 
             publishProgress(50);
 
-            Lunch = com.example.hyunjin.lunch.MealLibrary.getMealNew(CountryCode, schulCode,
+            Lunch = MealLibrary.getMealNew(CountryCode, schulCode,
                     schulCrseScCode, schulKndScCode, "2", year, month, day);
 
             publishProgress(75);

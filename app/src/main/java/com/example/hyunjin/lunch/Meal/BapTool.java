@@ -1,4 +1,4 @@
-package com.example.hyunjin.lunch;
+package com.example.hyunjin.lunch.Meal;
 
 import android.content.Context;
 import android.util.Log;
@@ -32,7 +32,7 @@ public class BapTool {
         /**
          * Do not Edit : yyyy.MM.dd(E)
          */
-        com.example.hyunjin.lunch.Preference mPref = new com.example.hyunjin.lunch.Preference(mContext, BAP_PREFERENCE_NAME);
+        Preference mPref = new Preference(mContext, BAP_PREFERENCE_NAME);
         SimpleDateFormat mFormat = new SimpleDateFormat("yyyy.MM.dd(E)", Locale.KOREA);
 
         for (int index = 0; index < Calender.length; index++) {
@@ -72,7 +72,7 @@ public class BapTool {
         /**
          * TODO 원하는 Date Format이 있으면 'yyyy년 MM월 dd일', 'E요일'을 수정하세요
          */
-        com.example.hyunjin.lunch.Preference mPref = new com.example.hyunjin.lunch.Preference(mContext, BAP_PREFERENCE_NAME);
+        Preference mPref = new Preference(mContext, BAP_PREFERENCE_NAME);
         SimpleDateFormat mCalenderFormat = new SimpleDateFormat("yyyy년 MM월 dd일", Locale.KOREA);
         SimpleDateFormat mDayOfWeekFormat = new SimpleDateFormat("E요일", Locale.KOREA);
         Calendar mDate = Calendar.getInstance();

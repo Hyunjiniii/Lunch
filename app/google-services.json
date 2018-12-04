@@ -1,0 +1,43 @@
+{
+  "project_info": {
+    "project_number": "88322941263",
+    "firebase_url": "https://lunch-614f3.firebaseio.com",
+    "project_id": "lunch-614f3",
+    "storage_bucket": "lunch-614f3.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:88322941263:android:f1769cbb4ba3ab7c",
+        "android_client_info": {
+          "package_name": "com.example.hyunjin.lunch"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "88322941263-2f4popn8skasneaspr46j4d2o28mr3qq.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDByY2RHUhJ1O--rv62Il8BIju5xit0KX4"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      },
+      "admob_app_id": "ca-app-pub-2076306889239295~3876028077"
+    }
+  ],
+  "configuration_version": "1"
+}

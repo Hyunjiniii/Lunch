@@ -3,6 +3,7 @@ package com.example.hyunjin.lunch;
 import android.app.ActionBar;
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Point;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -14,6 +15,8 @@ import android.widget.TextView;
 
 import com.example.hyunjin.lunch.Calendar.CalendarActivity;
 import com.example.hyunjin.lunch.Calendar.ReturnValue;
+import com.example.hyunjin.lunch.Meal.BapTool;
+import com.example.hyunjin.lunch.Meal.ProcessTask;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
 
@@ -25,6 +28,7 @@ public class MainActivity extends AppCompatActivity {
     private android.app.ProgressDialog pd;
     private ImageButton minus_date;
     private ImageButton plus_date;
+    private ImageButton setting_btn;
     private int year;
     private int month;
     private int day;
@@ -39,15 +43,15 @@ public class MainActivity extends AppCompatActivity {
         getSupportActionBar().setCustomView(R.layout.main_actionbar);
         setContentView(R.layout.activity_main);
 
+        AdView mAdView = (AdView) findViewById(R.id.adView);
+        AdRequest adRequest = new AdRequest.Builder()
+                .build();
+        mAdView.loadAd(adRequest);
+
         minus_date = (ImageButton) findViewById(R.id.main_minus_date_btn);
         plus_date = (ImageButton) findViewById(R.id.main_plus_date_btn);
         date = (TextView) findViewById(R.id.main_date_text);
-
-        AdView mAdView = (AdView) findViewById(R.id.adView);
-        AdRequest adRequest = new AdRequest.Builder()
-                .addTestDevice(AdRequest.DEVICE_ID_EMULATOR)
-                .build();
-        mAdView.loadAd(adRequest);
+        setting_btn = (ImageButton) findViewById(R.id.main_setting_btn);
 
         Calendar m = Calendar.getInstance();
 
@@ -58,6 +62,15 @@ public class MainActivity extends AppCompatActivity {
             month = m.get(Calendar.MONTH);
             day = m.get(Calendar.DATE);
         }
+
+        setting_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MainActivity.this, SettingActivity.class);
+                startActivity(intent);
+
+            }
+        });
 
         minus_date.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -115,7 +128,7 @@ public class MainActivity extends AppCompatActivity {
         startProcess();
     }
 
-    public class BapDownloadTask extends com.example.hyunjin.lunch.ProcessTask {
+    public class BapDownloadTask extends ProcessTask {
         public BapDownloadTask(Context mContext) {
             super(mContext);
         }
