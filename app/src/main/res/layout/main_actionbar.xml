@@ -5,18 +5,6 @@
     android:layout_marginTop="8dp"
     android:layout_marginBottom="8dp">
 
-    <ImageButton
-        android:id="@+id/main_setting_btn"
-        android:layout_width="32dp"
-        android:layout_height="32dp"
-        android:layout_alignParentLeft="true"
-        android:layout_centerVertical="true"
-        android:layout_margin="8dp"
-        android:adjustViewBounds="true"
-        android:background="@null"
-        android:scaleType="fitCenter"
-        android:src="@drawable/setting_vector" />
-
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -25,30 +13,5 @@
         android:text="배고빵"
         android:textColor="#ffffff"
         android:textSize="24sp" />
-
-    <ImageButton
-        android:id="@+id/main_notifi_on_btn"
-        android:layout_width="32dp"
-        android:layout_height="32dp"
-        android:layout_alignParentRight="true"
-        android:layout_centerVertical="true"
-        android:layout_margin="8dp"
-        android:adjustViewBounds="true"
-        android:background="@null"
-        android:scaleType="fitCenter"
-        android:src="@drawable/notification_vector" />
-
-    <ImageButton
-        android:id="@+id/main_notifi_off_btn"
-        android:layout_width="32dp"
-        android:layout_height="32dp"
-        android:layout_alignParentRight="true"
-        android:layout_centerVertical="true"
-        android:layout_margin="8dp"
-        android:adjustViewBounds="true"
-        android:background="@null"
-        android:scaleType="fitCenter"
-        android:src="@drawable/notification_off_vector"
-        android:visibility="gone" />
 
 </RelativeLayout>

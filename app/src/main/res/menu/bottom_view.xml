@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/bottom_time_table"
+        android:enabled="true"
+        android:icon="@drawable/calendar_gray"
+        android:title="시간표"
+        app:showAsAction="ifRoom" />
+
+    <item
+        android:id="@+id/bottom_lunch_table"
+        android:enabled="true"
+        android:icon="@drawable/cutlery_gray"
+        android:title="급식"
+        app:showAsAction="ifRoom" />
+
+    <item
+        android:id="@+id/bottom_setting"
+        android:enabled="true"
+        android:icon="@drawable/setting_gray"
+        android:title="환경설정"
+        app:showAsAction="ifRoom" />
+
+</menu>

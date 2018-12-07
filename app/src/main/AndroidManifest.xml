@@ -34,7 +34,9 @@
                 android:resource="@xml/widget_provider_info" />
         </receiver>
 
-        <activity android:name=".SettingActivity"></activity>
+        <activity android:name=".MainPage.TimeTable" />
+        <activity android:name=".MainPage.Setting" />
+        <activity android:name=".MainPage.Lunch"></activity>
     </application>
 
 </manifest>
