@@ -5,6 +5,10 @@ public class LunchItem {
     private String day_of_week;
     private String meal;
 
+    public LunchItem() {
+
+    }
+
     public LunchItem(String day, String day_of_week, String meal) {
         this.day = day;
         this.day_of_week = day_of_week;

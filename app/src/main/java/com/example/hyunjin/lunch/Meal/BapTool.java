@@ -78,26 +78,26 @@ public class BapTool {
         Calendar mDate = Calendar.getInstance();
         mDate.set(year, month, day);
 
-        Log.d("YEAR", "" + mDate.get(Calendar.YEAR));
-        Log.d("MONTH", "" + mDate.get(Calendar.MONTH));
-        Log.d("DAY_OF_MONTH", "" + mDate.get(Calendar.DAY_OF_MONTH));
+//        Log.d("YEAR", "" + mDate.get(Calendar.YEAR));
+//        Log.d("MONTH", "" + mDate.get(Calendar.MONTH));
+//        Log.d("DAY_OF_MONTH", "" + mDate.get(Calendar.DAY_OF_MONTH));
 
         restoreBapDateClass mData = new restoreBapDateClass();
 
         String mPrefLunchName = getBapStringFormat(year, month + 1, day, TYPE_LUNCH);
         String mPrefKcalName = getBapStringFormat(year, month + 1, day, TYPE_KCAL);
 
-        Log.d("mPrefLunchName", "" + mPrefLunchName);
+//        Log.d("mPrefLunchName", "" + mPrefLunchName);
 
         mData.Calender = mCalenderFormat.format(mDate.getTime());
         mData.DayOfTheWeek = mDayOfWeekFormat.format(mDate.getTime());
         mData.Lunch = mPref.getString(mPrefLunchName, null);
         mData.Kcal = mPref.getString(mPrefKcalName, null);
 
-        Log.d("mData.Calender", "" + mData.Calender);
-        Log.d("mData.DayOfTheWeek", "" + mData.DayOfTheWeek);
-        Log.d("mData.Lunch", "" + mData.Lunch);
-        Log.d("mData.Kcal", "" + mData.Kcal);
+//        Log.d("mData.Calender", "" + mData.Calender);
+//        Log.d("mData.DayOfTheWeek", "" + mData.DayOfTheWeek);
+//        Log.d("mData.Lunch", "" + mData.Lunch);
+//        Log.d("mData.Kcal", "" + mData.Kcal);
 
         /**
          * TODO 아침 데이터를 체크하는 코드는 필요 없다는 판단하에 추가하지 않음
