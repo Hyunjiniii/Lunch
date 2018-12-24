@@ -35,8 +35,6 @@ import static android.util.TypedValue.COMPLEX_UNIT_DIP;
 public class Lunch extends Fragment {
     private ECPagerView ecPagerView;
     private String[] meal = new String[31];
-    BapDownloadTask mProcessTask;
-    List<ECCardData> dataset;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -45,28 +43,24 @@ public class Lunch extends Fragment {
         // Get pager from layout
         ecPagerView = (ECPagerView) view.findViewById(R.id.ec_pager_element);
 
-        Calendar m = Calendar.getInstance();
-        int year = m.get(Calendar.YEAR);
-        int month = m.get(Calendar.MONTH);
-        int maxDay = m.getMaximum(Calendar.DAY_OF_MONTH);
+//        for (int i = 1; i <= maxDay; i++) {
+//            mProcessTask = new Lunch.BapDownloadTask(getContext());
+//            mProcessTask.execute(year, month, i);
+//            BapTool.restoreBapDateClass mData = BapTool.restoreBapData(getContext(), year, month, i);
+//
+//            if (mData.Lunch == null || mData.Lunch.equals("")) {
+//                meal[i - 1] = "dd";
+//            } else {
+//                meal[i - 1] = mData.Lunch;
+//            }
+//        }
+//
+//        for (int i = 0; i <= maxDay - 1; i++) {
+//            // Generate example dataset
+//            dataset = CardDataImpl.generateExampleData(meal[i], i);
+//        }
 
-        for (int i = 1; i <= maxDay; i++) {
-            mProcessTask = new Lunch.BapDownloadTask(getContext());
-            mProcessTask.execute(year, month, i);
-            BapTool.restoreBapDateClass mData = BapTool.restoreBapData(getContext(), year, month, i);
-
-            if (mData.Lunch == null || mData.Lunch.equals("")) {
-                meal[i - 1] = "dd";
-            } else {
-                meal[i - 1] = mData.Lunch;
-            }
-        }
-
-        for (int i = 0; i <= maxDay - 1; i++) {
-            // Generate example dataset
-            dataset = CardDataImpl.generateExampleData(meal[i], i);
-        }
-
+        List<ECCardData> dataset = CardDataImpl.generateExampleData(getContext());
 
         // Implement pager adapter and attach it to pager view
         ECPagerViewAdapter ecPagerViewAdapter = new ECPagerViewAdapter(getContext(), dataset) {
@@ -109,24 +103,5 @@ public class Lunch extends Fragment {
 
         return view;
 
-    }
-
-    public class BapDownloadTask extends ProcessTask {
-        public BapDownloadTask(Context mContext) {
-            super(mContext);
-        }
-
-        @Override
-        public void onPreDownload() {
-        }
-
-        @Override
-        public void onUpdate(int progress) {
-        }
-
-        @Override
-        public void onFinish(long result) {
-
-        }
     }
 }

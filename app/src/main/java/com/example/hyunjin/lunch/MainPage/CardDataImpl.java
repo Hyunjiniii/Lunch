@@ -8,6 +8,7 @@ import com.example.hyunjin.lunch.Meal.ProcessTask;
 import com.example.hyunjin.lunch.R;
 import com.ramotion.expandingcollection.ECCardData;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Calendar;
@@ -47,17 +48,21 @@ public class CardDataImpl implements ECCardData<String> {
         return cardTitle;
     }
 
-    public static List<ECCardData> generateExampleData(String meal, int i) {
+    public static List<ECCardData> generateExampleData(Context context) {
         List<ECCardData> list = new ArrayList<>();
-        String[] cardMeal = new String[31];
-        cardMeal[i] = meal;
+        Calendar m = Calendar.getInstance();
+        int year = m.get(Calendar.YEAR);
+        int month = m.get(Calendar.MONTH);
+        int maxDay = m.getMaximum(Calendar.DAY_OF_MONTH);
+        BapDownloadTask mProcessTask;
 
-        for (int j = 0; j <= i; j++) {
-            if (cardMeal[j] != null) {
-                Log.d("Card", cardMeal[j] + "  " + String.valueOf(j));
-            }
-            list.add(new CardDataImpl(cardMeal[0], R.drawable.background, R.drawable.background, createItemsList(cardMeal[0])));
+        for (int i = 1; i <= maxDay; i++) {
+            mProcessTask = new BapDownloadTask(context);
+            mProcessTask.execute(year, month, i);
+            BapTool.restoreBapDateClass mData = BapTool.restoreBapData(context, year, month, i);
+            list.add(new CardDataImpl(mData.Lunch, R.drawable.background, R.drawable.background, createItemsList(mData.Lunch)));
         }
+
         return list;
     }
 
@@ -75,6 +80,25 @@ public class CardDataImpl implements ECCardData<String> {
 //        ));
 
         return list;
+    }
+
+    public static class BapDownloadTask extends ProcessTask {
+        public BapDownloadTask(Context mContext) {
+            super(mContext);
+        }
+
+        @Override
+        public void onPreDownload() {
+        }
+
+        @Override
+        public void onUpdate(int progress) {
+        }
+
+        @Override
+        public void onFinish(long result) {
+
+        }
     }
 
 
