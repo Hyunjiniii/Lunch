@@ -34,7 +34,6 @@ import static android.util.TypedValue.COMPLEX_UNIT_DIP;
 
 public class Lunch extends Fragment {
     private ECPagerView ecPagerView;
-    private String[] meal = new String[31];
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -42,23 +41,6 @@ public class Lunch extends Fragment {
 
         // Get pager from layout
         ecPagerView = (ECPagerView) view.findViewById(R.id.ec_pager_element);
-
-//        for (int i = 1; i <= maxDay; i++) {
-//            mProcessTask = new Lunch.BapDownloadTask(getContext());
-//            mProcessTask.execute(year, month, i);
-//            BapTool.restoreBapDateClass mData = BapTool.restoreBapData(getContext(), year, month, i);
-//
-//            if (mData.Lunch == null || mData.Lunch.equals("")) {
-//                meal[i - 1] = "dd";
-//            } else {
-//                meal[i - 1] = mData.Lunch;
-//            }
-//        }
-//
-//        for (int i = 0; i <= maxDay - 1; i++) {
-//            // Generate example dataset
-//            dataset = CardDataImpl.generateExampleData(meal[i], i);
-//        }
 
         List<ECCardData> dataset = CardDataImpl.generateExampleData(getContext());
 
@@ -100,6 +82,14 @@ public class Lunch extends Fragment {
 
         // Directly modifying dataset
         ecPagerViewAdapter.notifyDataSetChanged();
+
+        final ItemsCountView itemsCountView = (ItemsCountView) view.findViewById(R.id.items_count_view);
+        ecPagerView.setOnCardSelectedListener(new ECPagerView.OnCardSelectedListener() {
+            @Override
+            public void cardSelected(int newPosition, int oldPosition, int totalElements) {
+                itemsCountView.update(newPosition, oldPosition, totalElements);
+            }
+        });
 
         return view;
 
