@@ -53,6 +53,8 @@ public class CardDataImpl implements ECCardData<String> {
         Calendar m = Calendar.getInstance();
         int month = m.get(Calendar.MONTH) + 1;
 
+        Log.d("List_month", String.valueOf(month));
+
         for (int i = 1; i <= month; i++) {
             list.add(new CardDataImpl(i + "월", R.drawable.card_design, R.drawable.card_design, createItemsList(context, i)));
         }
@@ -66,20 +68,24 @@ public class CardDataImpl implements ECCardData<String> {
         Calendar m = Calendar.getInstance();
         int year = m.get(Calendar.YEAR);
         int maxDay = m.getMaximum(Calendar.DAY_OF_MONTH);
+        int null_day = 0;
 
         for (int j = 1; j <= maxDay; j++) {
             mProcessTask = new BapDownloadTask(context);
-            mProcessTask.execute(year, mmm + 1, j);
-            BapTool.restoreBapDateClass mData = BapTool.restoreBapData(context, year, mmm + 1, j);
-            if (mData.Lunch == null || mData.Lunch.equals(""))
+            mProcessTask.execute(year, mmm - 1, j);
+            BapTool.restoreBapDateClass mData = BapTool.restoreBapData(context, year, mmm - 1, j);
+            if (mData.Lunch == null || mData.Lunch.equals("")) {
+                null_day += 1;
                 list.add(year + "년 " + mmm + "월 " + j + "일\n\n" + "밥 없다");
+                if (null_day >= 28){
+                    list.clear();
+                    list.add("급식 정보가 없습니다.");
+                    break;
+                }
+            }
             else
                 list.add(year + "년 " + mmm + "월 " + j + "일\n\n" + mData.Lunch);
 
-            if (mData.isBlankDay){
-                list.add("급식 정보가 없습니다.");
-                break;
-            }
 
 
         }
