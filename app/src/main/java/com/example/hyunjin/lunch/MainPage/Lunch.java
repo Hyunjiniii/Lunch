@@ -59,20 +59,22 @@ public class Lunch extends Fragment {
                 list.setBackgroundColor(Color.WHITE);
 
                 // Here we can create elements for head view or inflate layout from xml using inflater service
-                TextView cardTitle = new TextView(getContext());
+                final TextView cardTitle = new TextView(getContext());
                 cardTitle.setText(cardData.getCardTitle());
-                cardTitle.setTextSize(COMPLEX_UNIT_DIP, 20);
+                cardTitle.setTextColor(Color.BLACK);
+                cardTitle.setTextSize(COMPLEX_UNIT_DIP, 16);
                 FrameLayout.LayoutParams layoutParams = new FrameLayout.LayoutParams(FrameLayout.LayoutParams.WRAP_CONTENT, FrameLayout.LayoutParams.WRAP_CONTENT);
                 layoutParams.gravity = Gravity.CENTER;
                 head.addView(cardTitle, layoutParams);
 
                 // Card toggling by click on head element
-//                head.setOnClickListener(new View.OnClickListener() {
-//                    @Override
-//                    public void onClick(final View v) {
-//                        ecPagerView.toggle();
-//                    }
-//                });
+                head.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(final View v) {
+                        Toast.makeText(getContext(), String.valueOf(cardTitle.getText()), Toast.LENGTH_SHORT).show();
+                        ecPagerView.toggle();
+                    }
+                });
             }
         };
         ecPagerView.setPagerViewAdapter(ecPagerViewAdapter);

@@ -78,9 +78,9 @@ public class BapTool {
         Calendar mDate = Calendar.getInstance();
         mDate.set(year, month, day);
 
-//        Log.d("YEAR", "" + mDate.get(Calendar.YEAR));
-//        Log.d("MONTH", "" + mDate.get(Calendar.MONTH));
-//        Log.d("DAY_OF_MONTH", "" + mDate.get(Calendar.DAY_OF_MONTH));
+        Log.d("YEAR", "" + mDate.get(Calendar.YEAR));
+        Log.d("MONTH", "" + mDate.get(Calendar.MONTH));
+        Log.d("DAY_OF_MONTH", "" + mDate.get(Calendar.DAY_OF_MONTH));
 
         restoreBapDateClass mData = new restoreBapDateClass();
 

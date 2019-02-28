@@ -51,33 +51,38 @@ public class CardDataImpl implements ECCardData<String> {
     public static List<ECCardData> generateExampleData(Context context) {
         List<ECCardData> list = new ArrayList<>();
         Calendar m = Calendar.getInstance();
-        int year = m.get(Calendar.YEAR);
-        int month = m.get(Calendar.MONTH);
-        int maxDay = m.getMaximum(Calendar.DAY_OF_MONTH);
-        BapDownloadTask mProcessTask;
+        int month = m.get(Calendar.MONTH) + 1;
 
-        for (int i = 1; i <= maxDay; i++) {
-            mProcessTask = new BapDownloadTask(context);
-            mProcessTask.execute(year, month, i);
-            BapTool.restoreBapDateClass mData = BapTool.restoreBapData(context, year, month, i);
-            list.add(new CardDataImpl(mData.Lunch, R.drawable.background, R.drawable.background, createItemsList(mData.Lunch)));
+        for (int i = 1; i <= month; i++) {
+            list.add(new CardDataImpl(i + "월", R.drawable.card_design, R.drawable.card_design, createItemsList(context, i)));
         }
 
         return list;
     }
 
-    private static List<String> createItemsList(String cardName) {
+    private static List<String> createItemsList(Context context, int mmm) {
         ArrayList<String> list = new ArrayList<>();
-//        list.addAll(
-//                Arrays.asList(
-//                cardName + " - Item 1",
-//                cardName + " - Item 2",
-//                cardName + " - Item 3",
-//                cardName + " - Item 4",
-//                cardName + " - Item 5",
-//                cardName + " - Item 6",
-//                cardName + " - Item 7"
-//        ));
+        BapDownloadTask mProcessTask;
+        Calendar m = Calendar.getInstance();
+        int year = m.get(Calendar.YEAR);
+        int maxDay = m.getMaximum(Calendar.DAY_OF_MONTH);
+
+        for (int j = 1; j <= maxDay; j++) {
+            mProcessTask = new BapDownloadTask(context);
+            mProcessTask.execute(year, mmm + 1, j);
+            BapTool.restoreBapDateClass mData = BapTool.restoreBapData(context, year, mmm + 1, j);
+            if (mData.Lunch == null || mData.Lunch.equals(""))
+                list.add(year + "년 " + mmm + "월 " + j + "일\n\n" + "밥 없다");
+            else
+                list.add(year + "년 " + mmm + "월 " + j + "일\n\n" + mData.Lunch);
+
+            if (mData.isBlankDay){
+                list.add("급식 정보가 없습니다.");
+                break;
+            }
+
+
+        }
 
         return list;
     }
