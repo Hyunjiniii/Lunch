@@ -5,7 +5,7 @@
     android:layout_height="match_parent">
 
     <android.support.v4.view.ViewPager
-        android:id="@+id/viewpager"
+        android:id="@+id/main_viewpager"
         android:layout_width="wrap_content"
         android:layout_height="0dp"
         app:layout_constraintBottom_toTopOf="@id/bottom_navigation"
@@ -21,7 +21,7 @@
         app:itemIconTint="@color/bottom_nav_selector"
         app:itemTextColor="@color/bottom_nav_selector"
         app:layout_constraintBottom_toTopOf="@id/adView"
-        app:layout_constraintTop_toBottomOf="@id/viewpager"
+        app:layout_constraintTop_toBottomOf="@id/main_viewpager"
         app:menu="@menu/bottom_view" />
 
     <com.google.android.gms.ads.AdView
