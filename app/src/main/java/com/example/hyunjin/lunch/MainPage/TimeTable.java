@@ -1,5 +1,7 @@
 package com.example.hyunjin.lunch.MainPage;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.design.widget.TabLayout;
@@ -12,12 +14,8 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.hyunjin.lunch.R;
-import com.example.hyunjin.lunch.TimeTablePage.PageAdapter;
 
-public class TimeTable extends Fragment {
-    private ViewPager viewPager;
-    private FragmentManager fm;
-    private TabLayout tab;
+public class TimeTable extends Fragment{
 
     @Nullable
     @Override
@@ -30,11 +28,6 @@ public class TimeTable extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        viewPager = (ViewPager) view.findViewById(R.id.time_table_viewpager);
-        viewPager.setAdapter(new PageAdapter(getChildFragmentManager()));
-        tab = (TabLayout) view.findViewById(R.id.time_table_tab);
-        tab.setupWithViewPager(viewPager);
 
     }
-
 }

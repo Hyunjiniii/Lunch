@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:ec="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -17,10 +17,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
-        ec:layout_constraintLeft_toLeftOf="parent"
-        ec:layout_constraintRight_toRightOf="parent"
-        ec:layout_constraintTop_toTopOf="parent"
-        ec:layout_constraintBottom_toTopOf="@id/ec_pager_element"
+        android:layout_marginTop="50dp"
         android:clipChildren="false"
         android:orientation="horizontal" />
 
@@ -28,12 +25,9 @@
         android:id="@+id/ec_pager_element"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        ec:layout_constraintLeft_toLeftOf="parent"
-        ec:layout_constraintRight_toRightOf="parent"
-        ec:layout_constraintBottom_toBottomOf="parent"
-        ec:layout_constraintTop_toBottomOf="@id/items_count_view"
+        android:layout_marginTop="170dp"
         ec:cardHeaderHeightExpanded="200dp"
         ec:cardHeight="250dp"
         ec:cardWidth="250dp" />
 
-</android.support.constraint.ConstraintLayout>
+</RelativeLayout>
