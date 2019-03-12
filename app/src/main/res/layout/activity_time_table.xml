@@ -6,6 +6,17 @@
     android:layout_height="match_parent"
     tools:context=".MainPage.TimeTable">
 
+    <TextView
+        android:id="@+id/time_table_null_txt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:text="시간표를 추가하세요"/>
+
+
     <TableLayout
         android:layout_width="0dp"
         android:layout_height="0dp"
@@ -16,40 +27,45 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <TableRow
-            android:background="@drawable/view_edge"
             android:layout_height="0dp"
             android:layout_weight="1">
 
             <TextView
                 android:layout_height="match_parent"
+                android:background="#33000000"
                 android:text=" " />
 
             <TextView
                 android:layout_height="match_parent"
+                android:background="#4DF44336"
                 android:gravity="center"
                 android:text="월"
                 android:textSize="18sp" />
 
             <TextView
                 android:layout_height="match_parent"
+                android:background="#4DFF9800"
                 android:gravity="center"
                 android:text="화"
                 android:textSize="18sp" />
 
             <TextView
                 android:layout_height="match_parent"
+                android:background="#4DFFC107"
                 android:gravity="center"
                 android:text="수"
                 android:textSize="18sp" />
 
             <TextView
                 android:layout_height="match_parent"
+                android:background="#4D8BC34A"
                 android:gravity="center"
                 android:text="목"
                 android:textSize="18sp" />
 
             <TextView
                 android:layout_height="match_parent"
+                android:background="#333F51B5"
                 android:gravity="center"
                 android:text="금"
                 android:textSize="18sp" />
@@ -61,35 +77,35 @@
 
             <TextView
                 android:layout_height="match_parent"
+                android:background="#1A000000"
                 android:gravity="center"
                 android:text="1"
                 android:textSize="24sp" />
 
-            <EditText
+            <TextView
                 android:id="@+id/mon1"
                 android:layout_height="match_parent"
-                android:background="@null"
                 android:gravity="center" />
 
-            <EditText
+            <TextView
                 android:id="@+id/tue1"
                 android:layout_height="match_parent"
-                android:background="@null" />
+                android:gravity="center" />
 
-            <EditText
+            <TextView
                 android:id="@+id/wed1"
                 android:layout_height="match_parent"
-                android:background="@null" />
+                android:layout_gravity="center" />
 
-            <EditText
+            <TextView
                 android:id="@+id/thu1"
                 android:layout_height="match_parent"
-                android:background="@null" />
+                android:gravity="center" />
 
-            <EditText
+            <TextView
                 android:id="@+id/fri1"
                 android:layout_height="match_parent"
-                android:background="@null" />
+                android:gravity="center" />
         </TableRow>
 
         <TableRow
@@ -97,38 +113,35 @@
             android:layout_weight="1">
 
             <TextView
-                android:layout_gravity="center"
+                android:layout_height="match_parent"
+                android:background="#1A000000"
+                android:gravity="center"
                 android:text="2"
                 android:textSize="24sp" />
 
-            <EditText
+            <TextView
                 android:id="@+id/mon2"
                 android:layout_height="match_parent"
-                android:background="@null"
                 android:gravity="center" />
 
-            <EditText
+            <TextView
                 android:id="@+id/tue2"
                 android:layout_height="match_parent"
-                android:background="@null"
                 android:gravity="center" />
 
-            <EditText
+            <TextView
                 android:id="@+id/wed2"
                 android:layout_height="match_parent"
-                android:background="@null"
                 android:gravity="center" />
 
-            <EditText
+            <TextView
                 android:id="@+id/thu2"
                 android:layout_height="match_parent"
-                android:background="@null"
                 android:gravity="center" />
 
-            <EditText
+            <TextView
                 android:id="@+id/fri2"
                 android:layout_height="match_parent"
-                android:background="@null"
                 android:gravity="center" />
         </TableRow>
 
@@ -137,38 +150,35 @@
             android:layout_weight="1">
 
             <TextView
-                android:layout_gravity="center"
+                android:layout_height="match_parent"
+                android:background="#1A000000"
+                android:gravity="center"
                 android:text="3"
                 android:textSize="24sp" />
 
-            <EditText
+            <TextView
                 android:id="@+id/mon3"
                 android:layout_height="match_parent"
-                android:background="@null"
                 android:gravity="center" />
 
-            <EditText
+            <TextView
                 android:id="@+id/tue3"
                 android:layout_height="match_parent"
-                android:background="@null"
                 android:gravity="center" />
 
-            <EditText
+            <TextView
                 android:id="@+id/wed3"
                 android:layout_height="match_parent"
-                android:background="@null"
                 android:gravity="center" />
 
-            <EditText
+            <TextView
                 android:id="@+id/thu3"
                 android:layout_height="match_parent"
-                android:background="@null"
                 android:gravity="center" />
 
-            <EditText
+            <TextView
                 android:id="@+id/fri3"
                 android:layout_height="match_parent"
-                android:background="@null"
                 android:gravity="center" />
         </TableRow>
 
@@ -177,38 +187,35 @@
             android:layout_weight="1">
 
             <TextView
-                android:layout_gravity="center"
+                android:layout_height="match_parent"
+                android:background="#1A000000"
+                android:gravity="center"
                 android:text="4"
                 android:textSize="24sp" />
 
-            <EditText
+            <TextView
                 android:id="@+id/mon4"
                 android:layout_height="match_parent"
-                android:background="@null"
                 android:gravity="center" />
 
-            <EditText
+            <TextView
                 android:id="@+id/tue4"
                 android:layout_height="match_parent"
-                android:background="@null"
                 android:gravity="center" />
 
-            <EditText
+            <TextView
                 android:id="@+id/wed4"
                 android:layout_height="match_parent"
-                android:background="@null"
                 android:gravity="center" />
 
-            <EditText
+            <TextView
                 android:id="@+id/thu4"
                 android:layout_height="match_parent"
-                android:background="@null"
                 android:gravity="center" />
 
-            <EditText
+            <TextView
                 android:id="@+id/fri4"
                 android:layout_height="match_parent"
-                android:background="@null"
                 android:gravity="center" />
         </TableRow>
 
@@ -217,38 +224,35 @@
             android:layout_weight="1">
 
             <TextView
-                android:layout_gravity="center"
+                android:layout_height="match_parent"
+                android:background="#1A000000"
+                android:gravity="center"
                 android:text="5"
                 android:textSize="24sp" />
 
-            <EditText
+            <TextView
                 android:id="@+id/mon5"
                 android:layout_height="match_parent"
-                android:background="@null"
                 android:gravity="center" />
 
-            <EditText
+            <TextView
                 android:id="@+id/tue5"
                 android:layout_height="match_parent"
-                android:background="@null"
                 android:gravity="center" />
 
-            <EditText
+            <TextView
                 android:id="@+id/wed5"
                 android:layout_height="match_parent"
-                android:background="@null"
                 android:gravity="center" />
 
-            <EditText
+            <TextView
                 android:id="@+id/thu5"
                 android:layout_height="match_parent"
-                android:background="@null"
                 android:gravity="center" />
 
-            <EditText
+            <TextView
                 android:id="@+id/fri5"
                 android:layout_height="match_parent"
-                android:background="@null"
                 android:gravity="center" />
         </TableRow>
 
@@ -257,38 +261,35 @@
             android:layout_weight="1">
 
             <TextView
-                android:layout_gravity="center"
+                android:layout_height="match_parent"
+                android:background="#1A000000"
+                android:gravity="center"
                 android:text="6"
                 android:textSize="24sp" />
 
-            <EditText
+            <TextView
                 android:id="@+id/mon6"
                 android:layout_height="match_parent"
-                android:background="@null"
                 android:gravity="center" />
 
-            <EditText
+            <TextView
                 android:id="@+id/tue6"
                 android:layout_height="match_parent"
-                android:background="@null"
                 android:gravity="center" />
 
-            <EditText
+            <TextView
                 android:id="@+id/wed6"
                 android:layout_height="match_parent"
-                android:background="@null"
                 android:gravity="center" />
 
-            <EditText
+            <TextView
                 android:id="@+id/thu6"
                 android:layout_height="match_parent"
-                android:background="@null"
                 android:gravity="center" />
 
-            <EditText
+            <TextView
                 android:id="@+id/fri6"
                 android:layout_height="match_parent"
-                android:background="@null"
                 android:gravity="center" />
         </TableRow>
 
@@ -297,41 +298,45 @@
             android:layout_weight="1">
 
             <TextView
-                android:layout_gravity="center"
+                android:layout_height="match_parent"
+                android:background="#1A000000"
+                android:gravity="center"
                 android:text="7"
                 android:textSize="24sp" />
 
-            <EditText
+            <TextView
                 android:id="@+id/mon7"
                 android:layout_height="match_parent"
-                android:background="@null"
                 android:gravity="center" />
 
-            <EditText
+            <TextView
                 android:id="@+id/tue7"
                 android:layout_height="match_parent"
-                android:background="@null"
                 android:gravity="center" />
 
-            <EditText
+            <TextView
                 android:id="@+id/wed7"
                 android:layout_height="match_parent"
-                android:background="@null"
                 android:gravity="center" />
 
-            <EditText
+            <TextView
                 android:id="@+id/thu7"
                 android:layout_height="match_parent"
-                android:background="@null"
                 android:gravity="center" />
 
-            <EditText
+            <TextView
                 android:id="@+id/fri7"
                 android:layout_height="match_parent"
-                android:background="@null"
                 android:gravity="center" />
         </TableRow>
-
-
     </TableLayout>
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/time_table_fab"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp"
+        android:src="@drawable/add_ic"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintRight_toRightOf="parent" />
 </android.support.constraint.ConstraintLayout>
