@@ -1,13 +1,8 @@
-package com.example.hyunjin.lunch.MainPage;
+package com.example.hyunjin.lunch.MainPage.Lunch;
 
-import android.content.Context;
 import android.graphics.Color;
 import android.support.v4.app.Fragment;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -17,17 +12,11 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.hyunjin.lunch.MainActivity;
-import com.example.hyunjin.lunch.Meal.BapTool;
-import com.example.hyunjin.lunch.Meal.ProcessTask;
 import com.example.hyunjin.lunch.R;
-import com.ramotion.expandingcollection.ECBackgroundSwitcherView;
 import com.ramotion.expandingcollection.ECCardData;
 import com.ramotion.expandingcollection.ECPagerView;
 import com.ramotion.expandingcollection.ECPagerViewAdapter;
 
-import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.List;
 
 import static android.util.TypedValue.COMPLEX_UNIT_DIP;

@@ -1,4 +1,4 @@
-package com.example.hyunjin.lunch.MainPage;
+package com.example.hyunjin.lunch.MainPage.Lunch;
 
 import android.content.Context;
 import android.support.annotation.NonNull;

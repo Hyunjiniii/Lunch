@@ -12,7 +12,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainPage.TimeTableAdd"></activity>
+        <activity android:name=".MainPage.TimeTable.TimeTableAdd"></activity>
 
         <meta-data
             android:name="com.google.android.gms.ads.APPLICATION_ID"

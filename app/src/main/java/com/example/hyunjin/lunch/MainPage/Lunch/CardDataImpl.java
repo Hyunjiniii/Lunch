@@ -1,4 +1,4 @@
-package com.example.hyunjin.lunch.MainPage;
+package com.example.hyunjin.lunch.MainPage.Lunch;
 
 import android.content.Context;
 import android.util.Log;
@@ -8,13 +8,9 @@ import com.example.hyunjin.lunch.Meal.ProcessTask;
 import com.example.hyunjin.lunch.R;
 import com.ramotion.expandingcollection.ECCardData;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Calendar;
 import java.util.List;
-
-import static java.security.AccessController.getContext;
 
 public class CardDataImpl implements ECCardData<String> {
     private String cardTitle;

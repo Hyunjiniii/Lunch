@@ -1,9 +1,12 @@
-package com.example.hyunjin.lunch.MainPage;
+package com.example.hyunjin.lunch.MainPage.Lunch;
 
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
-import android.widget.Switch;
+
+import com.example.hyunjin.lunch.MainPage.Lunch.Lunch;
+import com.example.hyunjin.lunch.MainPage.Setting;
+import com.example.hyunjin.lunch.MainPage.TimeTable.TimeTable;
 
 public class MainViewAdapter extends FragmentStatePagerAdapter {
 
