@@ -9,7 +9,10 @@ import android.view.Window;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.hyunjin.lunch.R;
 
@@ -18,43 +21,53 @@ import java.util.List;
 
 public class CustomDialog {
     private Context context;
-    private String s;
+    private String s = null;
 
     public CustomDialog(Context context) {
         this.context = context;
     }
 
-    public void callFunction(final int date, final Button button) {
+    public void callFunction(final TextView textView, int n, int m) {
         final Dialog dlg = new Dialog(context);
 
         dlg.requestWindowFeature(Window.FEATURE_NO_TITLE);
         dlg.setContentView(R.layout.time_table_custom_dialog);
         dlg.show();
 
-        final ListView listView = (ListView) dlg.findViewById(R.id.time_table_custom_dialog_listview);
-        final List<String> list = new ArrayList<>();
-        final ArrayAdapter<String> adapter = new ArrayAdapter<>(context, android.R.layout.simple_list_item_1, list);
-        final TimeTableAdd timeTableAdd = new TimeTableAdd();
+        final EditText editName = (EditText) dlg.findViewById(R.id.dialog_edit);
+        final Button ok_btn = (Button) dlg.findViewById(R.id.dialog_ok_btn);
+        final TextView mainText = (TextView) dlg.findViewById(R.id.dialog_main_text);
 
-        listView.setAdapter(adapter);
+        switch (m) {
+            case 0:
+                mainText.setText("월요일 " + String.valueOf(n + 1) + "교시");
+                break;
+            case 1:
+                mainText.setText("화요일 " + String.valueOf(n + 1) + "교시");
+                break;
+            case 2:
+                mainText.setText("수요일 " + String.valueOf(n + 1) + "교시");
+                break;
+            case 3:
+                mainText.setText("목요일 " + String.valueOf(n + 1) + "교시");
+                break;
+            case 4:
+                mainText.setText("금요일 " + String.valueOf(n + 1) + "교시");
+                break;
+        }
 
-        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        ok_btn.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                s = (String) adapterView.getItemAtPosition(i);
-                button.setText(s);
-                timeTableAdd.setId(date, Integer.parseInt(String.valueOf(button.getText()).substring(0, 1)));
-                Log.d("date", String.valueOf(date));
-                dlg.dismiss();
+            public void onClick(View view) {
+                if (editName.getText().toString().length() == 0) {
+                    Toast.makeText(context, "과목명을 입력해주세요", Toast.LENGTH_SHORT).show();
+                } else {
+                    textView.setText(String.valueOf(editName.getText()));
+                    Log.d("EditName", String.valueOf(editName.getText()));
+                    dlg.dismiss();
+                }
             }
         });
 
-        list.add("1교시");
-        list.add("2교시");
-        list.add("3교시");
-        list.add("4교시");
-        list.add("5교시");
-        list.add("6교시");
-        list.add("7교시");
     }
 }
