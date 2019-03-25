@@ -27,7 +27,7 @@ public class CustomDialog {
         this.context = context;
     }
 
-    public void callFunction(final TextView textView, int n, int m) {
+    public void callFunction(final TextView null_txt, final TextView textView, int n, int m) {
         final Dialog dlg = new Dialog(context);
 
         dlg.requestWindowFeature(Window.FEATURE_NO_TITLE);
@@ -40,19 +40,19 @@ public class CustomDialog {
 
         switch (m) {
             case 0:
-                mainText.setText("월요일 " + String.valueOf(n + 1) + "교시");
+                mainText.setText("월요일   " + String.valueOf(n + 1) + "교시");
                 break;
             case 1:
-                mainText.setText("화요일 " + String.valueOf(n + 1) + "교시");
+                mainText.setText("화요일   " + String.valueOf(n + 1) + "교시");
                 break;
             case 2:
-                mainText.setText("수요일 " + String.valueOf(n + 1) + "교시");
+                mainText.setText("수요일   " + String.valueOf(n + 1) + "교시");
                 break;
             case 3:
-                mainText.setText("목요일 " + String.valueOf(n + 1) + "교시");
+                mainText.setText("목요일   " + String.valueOf(n + 1) + "교시");
                 break;
             case 4:
-                mainText.setText("금요일 " + String.valueOf(n + 1) + "교시");
+                mainText.setText("금요일   " + String.valueOf(n + 1) + "교시");
                 break;
         }
 
@@ -63,6 +63,7 @@ public class CustomDialog {
                     Toast.makeText(context, "과목명을 입력해주세요", Toast.LENGTH_SHORT).show();
                 } else {
                     textView.setText(String.valueOf(editName.getText()));
+                    null_txt.setVisibility(View.GONE);
                     Log.d("EditName", String.valueOf(editName.getText()));
                     dlg.dismiss();
                 }

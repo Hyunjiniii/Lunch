@@ -11,6 +11,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="시간표를 추가하세요"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
@@ -32,44 +33,49 @@
 
             <TextView
                 android:layout_height="match_parent"
-                android:background="#33000000"
+                android:background="#61727272"
                 android:text=" " />
 
             <TextView
                 android:layout_height="match_parent"
-                android:background="#4DF44336"
+                android:background="#80F44336"
                 android:gravity="center"
                 android:text="월"
                 android:textSize="18sp" />
 
             <TextView
                 android:layout_height="match_parent"
-                android:background="#4DFF9800"
+                android:background="#80FF9800"
                 android:gravity="center"
                 android:text="화"
                 android:textSize="18sp" />
 
             <TextView
                 android:layout_height="match_parent"
-                android:background="#4DFFC107"
+                android:background="#80FFC107"
                 android:gravity="center"
                 android:text="수"
                 android:textSize="18sp" />
 
             <TextView
                 android:layout_height="match_parent"
-                android:background="#4D8BC34A"
+                android:background="#808BC34A"
                 android:gravity="center"
                 android:text="목"
                 android:textSize="18sp" />
 
             <TextView
                 android:layout_height="match_parent"
-                android:background="#333F51B5"
+                android:background="#663F51B5"
                 android:gravity="center"
                 android:text="금"
                 android:textSize="18sp" />
         </TableRow>
+
+        <View
+            android:layout_height="1dp"
+            android:layout_weight="0dp"
+            android:background="#A0A0A0" />
 
         <TableRow
             android:layout_height="0dp"
@@ -108,6 +114,12 @@
                 android:gravity="center" />
         </TableRow>
 
+        <View
+            android:layout_height="1dp"
+            android:layout_weight="0dp"
+            android:background="#A0A0A0" />
+
+
         <TableRow
             android:layout_height="0dp"
             android:layout_weight="1">
@@ -144,6 +156,11 @@
                 android:layout_height="match_parent"
                 android:gravity="center" />
         </TableRow>
+
+        <View
+            android:layout_height="1dp"
+            android:layout_weight="0dp"
+            android:background="#A0A0A0" />
 
         <TableRow
             android:layout_height="0dp"
@@ -182,6 +199,11 @@
                 android:gravity="center" />
         </TableRow>
 
+        <View
+            android:layout_height="1dp"
+            android:layout_weight="0dp"
+            android:background="#A0A0A0" />
+
         <TableRow
             android:layout_height="0dp"
             android:layout_weight="1">
@@ -218,6 +240,11 @@
                 android:layout_height="match_parent"
                 android:gravity="center" />
         </TableRow>
+
+        <View
+            android:layout_height="1dp"
+            android:layout_weight="0dp"
+            android:background="#A0A0A0" />
 
         <TableRow
             android:layout_height="0dp"
@@ -256,6 +283,11 @@
                 android:gravity="center" />
         </TableRow>
 
+        <View
+            android:layout_height="1dp"
+            android:layout_weight="0dp"
+            android:background="#A0A0A0" />
+
         <TableRow
             android:layout_height="0dp"
             android:layout_weight="1">
@@ -292,6 +324,11 @@
                 android:layout_height="match_parent"
                 android:gravity="center" />
         </TableRow>
+
+        <View
+            android:layout_height="1dp"
+            android:layout_weight="0dp"
+            android:background="#A0A0A0" />
 
         <TableRow
             android:layout_height="0dp"
