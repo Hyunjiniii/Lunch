@@ -5,67 +5,44 @@
     android:layout_height="400dp">
 
     <TextView
-        android:id="@+id/dialog_main_text"
-        android:layout_width="0dp"
+        android:id="@+id/top_text"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="18dp"
         android:gravity="center"
-        android:text="요일 교시"
+        android:text="시간표 추가"
         android:textColor="#000000"
-        android:textSize="28dp"
+        android:textSize="24sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@id/dialog_edit"
+        app:layout_constraintBottom_toTopOf="@id/linear"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <!--<View-->
-        <!--android:id="@+id/view"-->
-        <!--android:layout_width="0dp"-->
-        <!--android:layout_height="1dp"-->
-        <!--android:layout_marginLeft="12dp"-->
-        <!--android:layout_marginRight="12dp"-->
-        <!--android:background="#000000"-->
-        <!--app:layout_constraintBottom_toTopOf="@id/dialog_edit"-->
-        <!--app:layout_constraintLeft_toLeftOf="parent"-->
-        <!--app:layout_constraintRight_toRightOf="parent"-->
-        <!--app:layout_constraintTop_toBottomOf="@id/dialog_main_text" />-->
-
-    <EditText
-        android:id="@+id/dialog_edit"
-        android:layout_width="0dp"
+    <LinearLayout
+        android:id="@+id/linear"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="18dp"
-        android:hint="과목 명"
+        android:orientation="vertical"
         app:layout_constraintBottom_toTopOf="@id/dialog_ok_btn"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/dialog_main_text" />
+        app:layout_constraintTop_toTopOf="@id/top_text">
 
-    <!--<RadioGroup-->
-    <!--android:layout_width="0dp"-->
-    <!--android:layout_height="wrap_content"-->
-    <!--android:layout_margin="18dp"-->
-    <!--android:orientation="horizontal"-->
-    <!--app:layout_constraintBottom_toTopOf="@id/dialog_ok_btn"-->
-    <!--app:layout_constraintLeft_toLeftOf="parent"-->
-    <!--app:layout_constraintRight_toRightOf="parent"-->
-    <!--app:layout_constraintTop_toBottomOf="@id/dialog_edit">-->
+        <TextView
+            android:id="@+id/dialog_main_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="6dp"
+            android:text="월요일   1교시"
+            android:textColor="#000000" />
 
-    <!--<RadioButton-->
-    <!--android:id="@+id/color_radio1"-->
-    <!--android:layout_width="wrap_content"-->
-    <!--android:layout_height="wrap_content"-->
-    <!--android:checked="true" />-->
-
-    <!--<RadioButton-->
-    <!--android:id="@+id/color_radio2"-->
-    <!--android:layout_width="wrap_content"-->
-    <!--android:layout_height="wrap_content"-->
-    <!--android:buttonTint="@color/radio2" />-->
-
-
-    <!--</RadioGroup>-->
+        <EditText
+            android:id="@+id/dialog_edit"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="과목 명" />
+    </LinearLayout>
 
     <Button
         android:id="@+id/dialog_ok_btn"
@@ -73,9 +50,9 @@
         android:layout_height="wrap_content"
         android:layout_margin="18dp"
         android:text="완료"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/dialog_edit" />
+        app:layout_constraintTop_toBottomOf="@id/linear" />
 
 </android.support.constraint.ConstraintLayout>
