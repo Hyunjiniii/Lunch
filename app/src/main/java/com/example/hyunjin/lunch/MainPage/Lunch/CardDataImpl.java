@@ -49,8 +49,6 @@ public class CardDataImpl implements ECCardData<String> {
         Calendar m = Calendar.getInstance();
         int month = m.get(Calendar.MONTH) + 1;
 
-        Log.d("List_month", String.valueOf(month));
-
         for (int i = 1; i <= month; i++) {
             list.add(new CardDataImpl(i + "월", R.drawable.card_design, R.drawable.card_design, createItemsList(context, i)));
         }

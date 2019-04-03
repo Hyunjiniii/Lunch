@@ -1,7 +1,7 @@
 package com.example.hyunjin.lunch.MainPage.Lunch;
 
 import android.graphics.Color;
-import android.support.v4.app.Fragment;
+import androidx.fragment.app.Fragment;
 import android.os.Bundle;
 import android.view.Gravity;
 import android.view.LayoutInflater;
@@ -10,7 +10,6 @@ import android.view.ViewGroup;
 import android.widget.FrameLayout;
 import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.example.hyunjin.lunch.R;
 import com.ramotion.expandingcollection.ECCardData;
@@ -60,7 +59,6 @@ public class Lunch extends Fragment {
                 head.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(final View v) {
-                        Toast.makeText(getContext(), String.valueOf(cardTitle.getText()), Toast.LENGTH_SHORT).show();
                         ecPagerView.toggle();
                     }
                 });

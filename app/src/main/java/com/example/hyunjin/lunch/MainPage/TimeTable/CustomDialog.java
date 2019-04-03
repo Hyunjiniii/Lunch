@@ -1,21 +1,18 @@
 package com.example.hyunjin.lunch.MainPage.TimeTable;
 
+import android.app.Activity;
 import android.app.Dialog;
 import android.content.Context;
-import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
+import android.graphics.drawable.Drawable;
 import android.preference.PreferenceManager;
-import android.text.Editable;
-import android.text.TextWatcher;
-import android.util.Log;
 import android.view.View;
 import android.view.Window;
-import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
-import android.widget.EditText;
-import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -24,9 +21,9 @@ import com.example.hyunjin.lunch.R;
 import org.json.JSONArray;
 import org.json.JSONException;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
-import java.util.List;
+
+import petrov.kristiyan.colorpicker.ColorPicker;
 
 import static android.content.Context.MODE_PRIVATE;
 
@@ -35,9 +32,19 @@ public class CustomDialog {
     private Context context;
     private SharedPreferences pref;
     private SharedPreferences.Editor editor;
+    private Button picker_btn;
+    private int select;
+    private String text = null;
+    private Drawable background = null;
 
     public CustomDialog(Context context) {
         this.context = context;
+    }
+
+    public CustomDialog(Context context, String text, Drawable background) {
+        this.context = context;
+        this.text = text;
+        this.background = background;
     }
 
     public void callFunction(final TextView null_txt, final TextView textView, final int n, final int m) {
@@ -50,8 +57,18 @@ public class CustomDialog {
         final AutoCompleteTextView editName = (AutoCompleteTextView) dlg.findViewById(R.id.dialog_edit);
         final Button ok_btn = (Button) dlg.findViewById(R.id.dialog_ok_btn);
         final TextView mainText = (TextView) dlg.findViewById(R.id.dialog_main_text);
+        picker_btn = (Button) dlg.findViewById(R.id.dialog_color_picker_btn);
         list = new ArrayList<String>();
         editName.setAdapter(new ArrayAdapter<String>(context, android.R.layout.simple_dropdown_item_1line, getStringArrayPref(context, "list_json")));
+
+        if (text != null)
+            editName.setText(text);
+        if (background != null) {
+            int color = Color.TRANSPARENT;
+            if (background instanceof ColorDrawable)
+                color = ((ColorDrawable) background).getColor();
+            picker_btn.setBackgroundColor(color);
+        }
 
         switch (m) {
             case 0:
@@ -71,6 +88,13 @@ public class CustomDialog {
                 break;
         }
 
+        picker_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                openColorPicker();
+            }
+        });
+
         ok_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -82,30 +106,35 @@ public class CustomDialog {
                             pref = context.getSharedPreferences("mon", MODE_PRIVATE);
                             editor = pref.edit();
                             editor.putString(String.valueOf(n), String.valueOf(editName.getText()));
+                            editor.putInt(String.valueOf(n) + 1, select);
                             editor.commit();
                             break;
                         case 1:
                             pref = context.getSharedPreferences("tue", MODE_PRIVATE);
                             editor = pref.edit();
                             editor.putString(String.valueOf(n), String.valueOf(editName.getText()));
+                            editor.putInt(String.valueOf(n) + 1, select);
                             editor.commit();
                             break;
                         case 2:
                             pref = context.getSharedPreferences("wed", MODE_PRIVATE);
                             editor = pref.edit();
                             editor.putString(String.valueOf(n), String.valueOf(editName.getText()));
+                            editor.putInt(String.valueOf(n) + 1, select);
                             editor.commit();
                             break;
                         case 3:
                             pref = context.getSharedPreferences("thu", MODE_PRIVATE);
                             editor = pref.edit();
                             editor.putString(String.valueOf(n), String.valueOf(editName.getText()));
+                            editor.putInt(String.valueOf(n) + 1, select);
                             editor.commit();
                             break;
                         case 4:
                             pref = context.getSharedPreferences("fri", MODE_PRIVATE);
                             editor = pref.edit();
                             editor.putString(String.valueOf(n), String.valueOf(editName.getText()));
+                            editor.putInt(String.valueOf(n) + 1, select);
                             editor.commit();
                             break;
                     }
@@ -157,4 +186,43 @@ public class CustomDialog {
         }
         return urls;
     }
+
+    private void openColorPicker() {
+        final ColorPicker colorPicker = new ColorPicker((Activity) context);
+        ArrayList<String> colors = new ArrayList<>();
+
+        colors.add("#ffab91");
+        colors.add("#F48FB1");
+        colors.add("#ce93d8");
+        colors.add("#b39ddb");
+        colors.add("#9fa8da");
+        colors.add("#90caf9");
+        colors.add("#81d4fa");
+        colors.add("#80deea");
+        colors.add("#80cbc4");
+        colors.add("#c5e1a5");
+        colors.add("#e6ee9c");
+        colors.add("#fff59d");
+        colors.add("#ffe082");
+        colors.add("#ffcc80");
+        colors.add("#bcaaa4");
+
+        colorPicker.setColors(colors)
+                .setColumns(5)
+                .setRoundColorButton(true)
+                .setOnChooseColorListener(new ColorPicker.OnChooseColorListener() {
+                    @Override
+                    public void onChooseColor(int position, int color) {
+                        Toast.makeText(context, String.valueOf(color), Toast.LENGTH_SHORT).show();
+                        picker_btn.setBackgroundColor(color);
+                        select = color;
+                    }
+
+                    @Override
+                    public void onCancel() {
+                        colorPicker.dismissDialog();
+                    }
+                }).show();
+    }
+
 }

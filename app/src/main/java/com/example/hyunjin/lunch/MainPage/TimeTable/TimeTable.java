@@ -2,16 +2,18 @@ package com.example.hyunjin.lunch.MainPage.TimeTable;
 
 import android.content.Context;
 import android.content.SharedPreferences;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
+
 import android.os.Bundle;
-import android.support.v4.app.FragmentTransaction;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.example.hyunjin.lunch.R;
 
@@ -44,8 +46,14 @@ public class TimeTable extends Fragment {
                 textViews[i][j].setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        CustomDialog customDialog = new CustomDialog(getContext());
-                        customDialog.callFunction(null_txt, textViews[finalI][finalJ], finalI, finalJ);
+                        if (textViews[finalI][finalJ].getText().length() != 0) {
+                            CustomDialog customDialog = new CustomDialog(getContext(), textViews[finalI][finalJ].getText().toString(), textViews[finalI][finalJ].getBackground());
+                            customDialog.callFunction(null_txt, textViews[finalI][finalJ], finalI, finalJ);
+                        } else {
+                            CustomDialog customDialog = new CustomDialog(getContext());
+                            customDialog.callFunction(null_txt, textViews[finalI][finalJ], finalI, finalJ);
+                        }
+
                     }
                 });
             }
@@ -60,11 +68,6 @@ public class TimeTable extends Fragment {
         return view;
     }
 
-    private void refresh() {
-        FragmentTransaction transaction = getFragmentManager().beginTransaction();
-        transaction.detach(this).attach(this).commit();
-    }
-
     private void getPreferences(String date) {
         switch (date) {
             case "mon":
@@ -72,6 +75,11 @@ public class TimeTable extends Fragment {
                     SharedPreferences pref = getContext().getSharedPreferences("mon", Context.MODE_PRIVATE);
                     if (pref.getString(String.valueOf(i), null) != null)
                         textViews[i][0].setText(pref.getString(String.valueOf(i), null));
+                    if (pref.getInt(String.valueOf(i) + 1, 0) != 0) {
+                        textViews[i][0].setBackgroundColor(pref.getInt(String.valueOf(i) + 1, 0));
+//                        refresh();
+                    }
+
                 }
                 break;
             case "tue":
@@ -79,6 +87,10 @@ public class TimeTable extends Fragment {
                     SharedPreferences pref = getContext().getSharedPreferences("tue", Context.MODE_PRIVATE);
                     if (pref.getString(String.valueOf(i), null) != null)
                         textViews[i][1].setText(pref.getString(String.valueOf(i), null));
+                    if (pref.getInt(String.valueOf(i) + 1, 0) != 0) {
+                        textViews[i][1].setBackgroundColor(pref.getInt(String.valueOf(i) + 1, 0));
+//                        refresh();
+                    }
                 }
                 break;
             case "wed":
@@ -86,6 +98,10 @@ public class TimeTable extends Fragment {
                     SharedPreferences pref = getContext().getSharedPreferences("wed", Context.MODE_PRIVATE);
                     if (pref.getString(String.valueOf(i), null) != null)
                         textViews[i][2].setText(pref.getString(String.valueOf(i), null));
+                    if (pref.getInt(String.valueOf(i) + 1, 0) != 0) {
+                        textViews[i][2].setBackgroundColor(pref.getInt(String.valueOf(i) + 1, 0));
+//                        refresh();
+                    }
                 }
                 break;
             case "thu":
@@ -93,6 +109,10 @@ public class TimeTable extends Fragment {
                     SharedPreferences pref = getContext().getSharedPreferences("thu", Context.MODE_PRIVATE);
                     if (pref.getString(String.valueOf(i), null) != null)
                         textViews[i][3].setText(pref.getString(String.valueOf(i), null));
+                    if (pref.getInt(String.valueOf(i) + 1, 0) != 0) {
+                        textViews[i][3].setBackgroundColor(pref.getInt(String.valueOf(i) + 1, 0));
+//                        refresh();
+                    }
                 }
                 break;
             case "fri":
@@ -100,10 +120,18 @@ public class TimeTable extends Fragment {
                     SharedPreferences pref = getContext().getSharedPreferences("fri", Context.MODE_PRIVATE);
                     if (pref.getString(String.valueOf(i), null) != null)
                         textViews[i][4].setText(pref.getString(String.valueOf(i), null));
+                    if (pref.getInt(String.valueOf(i) + 1, 0) != 0) {
+                        textViews[i][4].setBackgroundColor(pref.getInt(String.valueOf(i) + 1, 0));
+//                        refresh();
+                    }
                 }
                 break;
         }
     }
 
+    private void refresh() {
+        FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
+        fragmentTransaction.detach(this).attach(this).commit();
+    }
 
 }
