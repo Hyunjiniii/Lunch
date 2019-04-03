@@ -34,40 +34,40 @@
 
             <TextView
                 android:layout_height="match_parent"
-                android:background="#FFA59D"
+                android:background="#BDBDBD"
                 android:text="" />
 
             <TextView
                 android:layout_height="match_parent"
-                android:background="#FFD180"
+                android:background="#BDBDBD"
                 android:gravity="center"
                 android:text="월"
                 android:textSize="18sp" />
 
             <TextView
                 android:layout_height="match_parent"
-                android:background="#FFE57F"
+                android:background="#BDBDBD"
                 android:gravity="center"
                 android:text="화"
                 android:textSize="18sp" />
 
             <TextView
                 android:layout_height="match_parent"
-                android:background="#FFFF8D"
+                android:background="#BDBDBD"
                 android:gravity="center"
                 android:text="수"
                 android:textSize="18sp" />
 
             <TextView
                 android:layout_height="match_parent"
-                android:background="#CEFF99"
+                android:background="#BDBDBD"
                 android:gravity="center"
                 android:text="목"
                 android:textSize="18sp" />
 
             <TextView
                 android:layout_height="match_parent"
-                android:background="#B9F6CA"
+                android:background="#BDBDBD"
                 android:gravity="center"
                 android:text="금"
                 android:textSize="18sp" />

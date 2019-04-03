@@ -28,7 +28,7 @@ public class TimeTable extends Fragment {
                 R.id.wed6, R.id.thu6, R.id.fri6}, {R.id.mon7, R.id.tue7, R.id.wed7, R.id.thu7, R.id.fri7}};
         final TextView null_txt = (TextView) view.findViewById(R.id.time_table_null_txt);
         SharedPreferences pref = getContext().getSharedPreferences("pref", Context.MODE_PRIVATE);
-        if (pref.getBoolean("NullText", true))
+        if (!pref.getBoolean("NullText", true))
             null_txt.setVisibility(View.GONE);
 
         for (int i = 0; i <= 6; i++) {
@@ -102,9 +102,8 @@ public class TimeTable extends Fragment {
                         textViews[i][4].setText(pref.getString(String.valueOf(i), null));
                 }
                 break;
-
         }
-
-
     }
+
+
 }

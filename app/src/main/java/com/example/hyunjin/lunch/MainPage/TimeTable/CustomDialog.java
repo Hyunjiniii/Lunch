@@ -4,11 +4,15 @@ import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.preference.PreferenceManager;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.View;
 import android.view.Window;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
@@ -17,12 +21,17 @@ import android.widget.Toast;
 
 import com.example.hyunjin.lunch.R;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.List;
 
 import static android.content.Context.MODE_PRIVATE;
 
 public class CustomDialog {
+    private ArrayList<String> list;
     private Context context;
     private SharedPreferences pref;
     private SharedPreferences.Editor editor;
@@ -38,9 +47,11 @@ public class CustomDialog {
         dlg.setContentView(R.layout.time_table_custom_dialog);
         dlg.show();
 
-        final EditText editName = (EditText) dlg.findViewById(R.id.dialog_edit);
+        final AutoCompleteTextView editName = (AutoCompleteTextView) dlg.findViewById(R.id.dialog_edit);
         final Button ok_btn = (Button) dlg.findViewById(R.id.dialog_ok_btn);
         final TextView mainText = (TextView) dlg.findViewById(R.id.dialog_main_text);
+        list = new ArrayList<String>();
+        editName.setAdapter(new ArrayAdapter<String>(context, android.R.layout.simple_dropdown_item_1line, getStringArrayPref(context, "list_json")));
 
         switch (m) {
             case 0:
@@ -103,6 +114,8 @@ public class CustomDialog {
                     editor = pref.edit();
                     editor.putBoolean("NullText", false);
                     editor.commit();
+                    list.add(editName.getText().toString());
+                    setStringArrayPref(context, "list_json", list);
 
                     textView.setText(String.valueOf(editName.getText()));
                     null_txt.setVisibility(View.GONE);
@@ -110,5 +123,38 @@ public class CustomDialog {
                 }
             }
         });
+    }
+
+    private void setStringArrayPref(Context context, String key, ArrayList<String> values) {
+        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context);
+        SharedPreferences.Editor editor = prefs.edit();
+        JSONArray a = new JSONArray();
+        for (int i = 0; i < values.size(); i++) {
+            a.put(values.get(i));
+        }
+        if (!values.isEmpty()) {
+            editor.putString(key, a.toString());
+        } else {
+            editor.putString(key, null);
+        }
+        editor.apply();
+    }
+
+    private ArrayList<String> getStringArrayPref(Context context, String key) {
+        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context);
+        String json = prefs.getString(key, null);
+        ArrayList<String> urls = new ArrayList<String>();
+        if (json != null) {
+            try {
+                JSONArray a = new JSONArray(json);
+                for (int i = 0; i < a.length(); i++) {
+                    String url = a.optString(i);
+                    urls.add(url);
+                }
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+        }
+        return urls;
     }
 }
