@@ -33,7 +33,7 @@ public class CustomDialog {
     private SharedPreferences pref;
     private SharedPreferences.Editor editor;
     private Button picker_btn;
-    private int select;
+    private int select = 0;
     private String text = null;
     private Drawable background = null;
     private AutoCompleteTextView editName;
@@ -130,6 +130,8 @@ public class CustomDialog {
 
                     textView.setText(String.valueOf(editName.getText()));
                     null_txt.setVisibility(View.GONE);
+                    if (select != 0)
+                        textView.setBackgroundColor(select);
                     dlg.dismiss();
                 }
             }
