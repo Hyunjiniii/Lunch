@@ -36,6 +36,7 @@ public class CustomDialog {
     private int select;
     private String text = null;
     private Drawable background = null;
+    private AutoCompleteTextView editName;
 
     public CustomDialog(Context context) {
         this.context = context;
@@ -54,10 +55,11 @@ public class CustomDialog {
         dlg.setContentView(R.layout.time_table_custom_dialog);
         dlg.show();
 
-        final AutoCompleteTextView editName = (AutoCompleteTextView) dlg.findViewById(R.id.dialog_edit);
         final Button ok_btn = (Button) dlg.findViewById(R.id.dialog_ok_btn);
         final TextView mainText = (TextView) dlg.findViewById(R.id.dialog_main_text);
+        editName = (AutoCompleteTextView) dlg.findViewById(R.id.dialog_edit);
         picker_btn = (Button) dlg.findViewById(R.id.dialog_color_picker_btn);
+
         list = new ArrayList<String>();
         editName.setAdapter(new ArrayAdapter<String>(context, android.R.layout.simple_dropdown_item_1line, getStringArrayPref(context, "list_json")));
 
@@ -103,39 +105,19 @@ public class CustomDialog {
                 } else {
                     switch (m) {
                         case 0:
-                            pref = context.getSharedPreferences("mon", MODE_PRIVATE);
-                            editor = pref.edit();
-                            editor.putString(String.valueOf(n), String.valueOf(editName.getText()));
-                            editor.putInt(String.valueOf(n) + 1, select);
-                            editor.commit();
+                            set("mon", n);
                             break;
                         case 1:
-                            pref = context.getSharedPreferences("tue", MODE_PRIVATE);
-                            editor = pref.edit();
-                            editor.putString(String.valueOf(n), String.valueOf(editName.getText()));
-                            editor.putInt(String.valueOf(n) + 1, select);
-                            editor.commit();
+                            set("tue", n);
                             break;
                         case 2:
-                            pref = context.getSharedPreferences("wed", MODE_PRIVATE);
-                            editor = pref.edit();
-                            editor.putString(String.valueOf(n), String.valueOf(editName.getText()));
-                            editor.putInt(String.valueOf(n) + 1, select);
-                            editor.commit();
+                            set("wed", n);
                             break;
                         case 3:
-                            pref = context.getSharedPreferences("thu", MODE_PRIVATE);
-                            editor = pref.edit();
-                            editor.putString(String.valueOf(n), String.valueOf(editName.getText()));
-                            editor.putInt(String.valueOf(n) + 1, select);
-                            editor.commit();
+                            set("thu", n);
                             break;
                         case 4:
-                            pref = context.getSharedPreferences("fri", MODE_PRIVATE);
-                            editor = pref.edit();
-                            editor.putString(String.valueOf(n), String.valueOf(editName.getText()));
-                            editor.putInt(String.valueOf(n) + 1, select);
-                            editor.commit();
+                            set("fri", n);
                             break;
                     }
 
@@ -152,39 +134,6 @@ public class CustomDialog {
                 }
             }
         });
-    }
-
-    private void setStringArrayPref(Context context, String key, ArrayList<String> values) {
-        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context);
-        SharedPreferences.Editor editor = prefs.edit();
-        JSONArray a = new JSONArray();
-        for (int i = 0; i < values.size(); i++) {
-            a.put(values.get(i));
-        }
-        if (!values.isEmpty()) {
-            editor.putString(key, a.toString());
-        } else {
-            editor.putString(key, null);
-        }
-        editor.apply();
-    }
-
-    private ArrayList<String> getStringArrayPref(Context context, String key) {
-        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context);
-        String json = prefs.getString(key, null);
-        ArrayList<String> urls = new ArrayList<String>();
-        if (json != null) {
-            try {
-                JSONArray a = new JSONArray(json);
-                for (int i = 0; i < a.length(); i++) {
-                    String url = a.optString(i);
-                    urls.add(url);
-                }
-            } catch (JSONException e) {
-                e.printStackTrace();
-            }
-        }
-        return urls;
     }
 
     private void openColorPicker() {
@@ -223,6 +172,47 @@ public class CustomDialog {
                         colorPicker.dismissDialog();
                     }
                 }).show();
+    }
+
+    private void set(String date, int index) {
+        pref = context.getSharedPreferences(date, MODE_PRIVATE);
+        editor = pref.edit();
+        editor.putString(String.valueOf(index), String.valueOf(editName.getText()));
+        editor.putInt(String.valueOf(index) + 1, select);
+        editor.commit();
+    }
+
+    private void setStringArrayPref(Context context, String key, ArrayList<String> values) {
+        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context);
+        SharedPreferences.Editor editor = prefs.edit();
+        JSONArray a = new JSONArray();
+        for (int i = 0; i < values.size(); i++) {
+            a.put(values.get(i));
+        }
+        if (!values.isEmpty()) {
+            editor.putString(key, a.toString());
+        } else {
+            editor.putString(key, null);
+        }
+        editor.apply();
+    }
+
+    private ArrayList<String> getStringArrayPref(Context context, String key) {
+        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context);
+        String json = prefs.getString(key, null);
+        ArrayList<String> urls = new ArrayList<String>();
+        if (json != null) {
+            try {
+                JSONArray a = new JSONArray(json);
+                for (int i = 0; i < a.length(); i++) {
+                    String url = a.optString(i);
+                    urls.add(url);
+                }
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+        }
+        return urls;
     }
 
 }

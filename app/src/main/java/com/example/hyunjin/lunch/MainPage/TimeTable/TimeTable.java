@@ -71,67 +71,30 @@ public class TimeTable extends Fragment {
     private void getPreferences(String date) {
         switch (date) {
             case "mon":
-                for (int i = 0; i <= 6; i++) {
-                    SharedPreferences pref = getContext().getSharedPreferences("mon", Context.MODE_PRIVATE);
-                    if (pref.getString(String.valueOf(i), null) != null)
-                        textViews[i][0].setText(pref.getString(String.valueOf(i), null));
-                    if (pref.getInt(String.valueOf(i) + 1, 0) != 0) {
-                        textViews[i][0].setBackgroundColor(pref.getInt(String.valueOf(i) + 1, 0));
-//                        refresh();
-                    }
-
-                }
+                get("mon", 0);
                 break;
             case "tue":
-                for (int i = 0; i <= 6; i++) {
-                    SharedPreferences pref = getContext().getSharedPreferences("tue", Context.MODE_PRIVATE);
-                    if (pref.getString(String.valueOf(i), null) != null)
-                        textViews[i][1].setText(pref.getString(String.valueOf(i), null));
-                    if (pref.getInt(String.valueOf(i) + 1, 0) != 0) {
-                        textViews[i][1].setBackgroundColor(pref.getInt(String.valueOf(i) + 1, 0));
-//                        refresh();
-                    }
-                }
+                get("tue", 1);
                 break;
             case "wed":
-                for (int i = 0; i <= 6; i++) {
-                    SharedPreferences pref = getContext().getSharedPreferences("wed", Context.MODE_PRIVATE);
-                    if (pref.getString(String.valueOf(i), null) != null)
-                        textViews[i][2].setText(pref.getString(String.valueOf(i), null));
-                    if (pref.getInt(String.valueOf(i) + 1, 0) != 0) {
-                        textViews[i][2].setBackgroundColor(pref.getInt(String.valueOf(i) + 1, 0));
-//                        refresh();
-                    }
-                }
+                get("wed", 2);
                 break;
             case "thu":
-                for (int i = 0; i <= 6; i++) {
-                    SharedPreferences pref = getContext().getSharedPreferences("thu", Context.MODE_PRIVATE);
-                    if (pref.getString(String.valueOf(i), null) != null)
-                        textViews[i][3].setText(pref.getString(String.valueOf(i), null));
-                    if (pref.getInt(String.valueOf(i) + 1, 0) != 0) {
-                        textViews[i][3].setBackgroundColor(pref.getInt(String.valueOf(i) + 1, 0));
-//                        refresh();
-                    }
-                }
+                get("thu", 3);
                 break;
             case "fri":
-                for (int i = 0; i <= 6; i++) {
-                    SharedPreferences pref = getContext().getSharedPreferences("fri", Context.MODE_PRIVATE);
-                    if (pref.getString(String.valueOf(i), null) != null)
-                        textViews[i][4].setText(pref.getString(String.valueOf(i), null));
-                    if (pref.getInt(String.valueOf(i) + 1, 0) != 0) {
-                        textViews[i][4].setBackgroundColor(pref.getInt(String.valueOf(i) + 1, 0));
-//                        refresh();
-                    }
-                }
+                get("fri", 4);
                 break;
         }
     }
 
-    private void refresh() {
-        FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
-        fragmentTransaction.detach(this).attach(this).commit();
+    private void get(String date, int index) {
+        for (int i = 0; i <= 6; i++) {
+            SharedPreferences pref = getContext().getSharedPreferences(date, Context.MODE_PRIVATE);
+            if (pref.getString(String.valueOf(i), null) != null)
+                textViews[i][index].setText(pref.getString(String.valueOf(i), null));
+            if (pref.getInt(String.valueOf(i) + 1, 0) != 0)
+                textViews[i][index].setBackgroundColor(pref.getInt(String.valueOf(i) + 1, 0));
+        }
     }
-
 }

@@ -10,8 +10,8 @@
         android:id="@+id/time_table_null_txt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="16sp"
         android:text="시간표를 추가하세요"
+        android:textSize="16sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
@@ -34,11 +34,13 @@
 
             <TextView
                 android:layout_height="match_parent"
+                android:layout_weight="1"
                 android:background="#BDBDBD"
                 android:text="" />
 
             <TextView
                 android:layout_height="match_parent"
+                android:layout_weight="1"
                 android:background="#BDBDBD"
                 android:gravity="center"
                 android:text="월"
@@ -46,6 +48,7 @@
 
             <TextView
                 android:layout_height="match_parent"
+                android:layout_weight="1"
                 android:background="#BDBDBD"
                 android:gravity="center"
                 android:text="화"
@@ -53,6 +56,7 @@
 
             <TextView
                 android:layout_height="match_parent"
+                android:layout_weight="1"
                 android:background="#BDBDBD"
                 android:gravity="center"
                 android:text="수"
@@ -60,6 +64,7 @@
 
             <TextView
                 android:layout_height="match_parent"
+                android:layout_weight="1"
                 android:background="#BDBDBD"
                 android:gravity="center"
                 android:text="목"
@@ -67,6 +72,7 @@
 
             <TextView
                 android:layout_height="match_parent"
+                android:layout_weight="1"
                 android:background="#BDBDBD"
                 android:gravity="center"
                 android:text="금"
@@ -74,8 +80,8 @@
         </TableRow>
 
         <View
-            android:layout_height="1dp"
             android:layout_width="match_parent"
+            android:layout_height="1dp"
             android:background="#A0A0A0" />
 
         <TableRow
@@ -116,8 +122,8 @@
         </TableRow>
 
         <View
-            android:layout_height="1dp"
             android:layout_width="match_parent"
+            android:layout_height="1dp"
             android:background="#A0A0A0" />
 
 
@@ -159,8 +165,8 @@
         </TableRow>
 
         <View
-            android:layout_height="1dp"
             android:layout_width="match_parent"
+            android:layout_height="1dp"
             android:background="#A0A0A0" />
 
         <TableRow
@@ -201,8 +207,8 @@
         </TableRow>
 
         <View
-            android:layout_height="1dp"
             android:layout_width="match_parent"
+            android:layout_height="1dp"
             android:background="#A0A0A0" />
 
         <TableRow
@@ -243,8 +249,8 @@
         </TableRow>
 
         <View
-            android:layout_height="1dp"
             android:layout_width="match_parent"
+            android:layout_height="1dp"
             android:background="#A0A0A0" />
 
         <TableRow
@@ -285,8 +291,8 @@
         </TableRow>
 
         <View
-            android:layout_height="1dp"
             android:layout_width="match_parent"
+            android:layout_height="1dp"
             android:background="#A0A0A0" />
 
         <TableRow
@@ -327,8 +333,8 @@
         </TableRow>
 
         <View
-            android:layout_height="1dp"
             android:layout_width="match_parent"
+            android:layout_height="1dp"
             android:background="#A0A0A0" />
 
         <TableRow
