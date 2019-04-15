@@ -46,10 +46,21 @@ public class CardDataImpl implements ECCardData<String> {
 
     public static List<ECCardData> generateExampleData(Context context) {
         List<ECCardData> list = new ArrayList<>();
+        BapDownloadTask mProcessTask;
         Calendar m = Calendar.getInstance();
         int month = m.get(Calendar.MONTH) + 1;
+        int mmm = month - 1;
+        int year = m.get(Calendar.YEAR);
+        int date = m.get(Calendar.DATE);
+        mProcessTask = new BapDownloadTask(context);
+        mProcessTask.execute(year, mmm, date);
+        BapTool.restoreBapDateClass mData = BapTool.restoreBapData(context, year, mmm, date);
 
         for (int i = 1; i <= month; i++) {
+            if (i == month) {
+                list.add(new CardDataImpl(mData.Lunch, R.drawable.card_design, R.drawable.card_design, createItemsList(context, i)));
+                break;
+            }
             list.add(new CardDataImpl(i + "월", R.drawable.card_design, R.drawable.card_design, createItemsList(context, i)));
         }
 
@@ -70,16 +81,16 @@ public class CardDataImpl implements ECCardData<String> {
             BapTool.restoreBapDateClass mData = BapTool.restoreBapData(context, year, mmm - 1, j);
             if (mData.Lunch == null || mData.Lunch.equals("")) {
                 null_day += 1;
-                list.add(year + "년 " + mmm + "월 " + j + "일\n\n" + "밥 없다");
+                list.add(year + "년 " + mmm + "월 " + j + "일\n\n" + "밥 없다.");
                 if (null_day >= 28){
                     list.clear();
                     list.add("급식 정보가 없습니다.");
                     break;
                 }
             }
-            else
-                list.add(year + "년 " + mmm + "월 " + j + "일\n\n" + mData.Lunch);
-
+            else {
+                list.add(year + "년 " + mmm + "월 " + j + "일 " + mData.DayOfTheWeek +"\n\n" + mData.Lunch);
+            }
 
 
         }

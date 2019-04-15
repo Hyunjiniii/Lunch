@@ -59,42 +59,22 @@ public class TimeTable extends Fragment {
             }
         }
 
-        getPreferences("mon");
-        getPreferences("tue");
-        getPreferences("wed");
-        getPreferences("thu");
-        getPreferences("fri");
+        getPreferences("mon", 0);
+        getPreferences("tue", 1);
+        getPreferences("wed", 2);
+        getPreferences("thu", 3);
+        getPreferences("fri", 4);
 
         return view;
     }
 
-    private void getPreferences(String date) {
-        switch (date) {
-            case "mon":
-                get("mon", 0);
-                break;
-            case "tue":
-                get("tue", 1);
-                break;
-            case "wed":
-                get("wed", 2);
-                break;
-            case "thu":
-                get("thu", 3);
-                break;
-            case "fri":
-                get("fri", 4);
-                break;
-        }
-    }
-
-    private void get(String date, int index) {
+    private void getPreferences(String date, int index) {
         for (int i = 0; i <= 6; i++) {
             SharedPreferences pref = getContext().getSharedPreferences(date, Context.MODE_PRIVATE);
             if (pref.getString(String.valueOf(i), null) != null)
                 textViews[i][index].setText(pref.getString(String.valueOf(i), null));
-            if (pref.getInt(String.valueOf(i) + 1, 0) != 0)
-                textViews[i][index].setBackgroundColor(pref.getInt(String.valueOf(i) + 1, 0));
+            if (pref.getInt(String.valueOf(i), 0) != 0)
+                textViews[i][index].setBackgroundColor(pref.getInt(String.valueOf(i), 0));
         }
     }
 }

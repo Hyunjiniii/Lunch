@@ -8,7 +8,6 @@ import androidx.viewpager.widget.ViewPager;
 import androidx.appcompat.app.AppCompatActivity;
 import android.view.MenuItem;
 
-import com.example.hyunjin.lunch.MainPage.Lunch.MainViewAdapter;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
 

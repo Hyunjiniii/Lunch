@@ -10,6 +10,7 @@ import android.graphics.drawable.Drawable;
 import android.preference.PreferenceManager;
 import android.view.View;
 import android.view.Window;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
@@ -136,27 +137,35 @@ public class CustomDialog {
                 }
             }
         });
+//((TextView)view).getText().toString()
+        editName.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
+
+            }
+        });
     }
 
     private void openColorPicker() {
         final ColorPicker colorPicker = new ColorPicker((Activity) context);
         ArrayList<String> colors = new ArrayList<>();
 
-        colors.add("#ffab91");
-        colors.add("#F48FB1");
-        colors.add("#ce93d8");
-        colors.add("#b39ddb");
-        colors.add("#9fa8da");
-        colors.add("#90caf9");
-        colors.add("#81d4fa");
-        colors.add("#80deea");
-        colors.add("#80cbc4");
-        colors.add("#c5e1a5");
-        colors.add("#e6ee9c");
-        colors.add("#fff59d");
-        colors.add("#ffe082");
-        colors.add("#ffcc80");
-        colors.add("#bcaaa4");
+
+        colors.add("#FFCCBC");
+        colors.add("#F8BBD0");
+        colors.add("#E1BEE7");
+        colors.add("#D1C4E9");
+        colors.add("#BBDEFB");
+        colors.add("#B2EBF2");
+        colors.add("#B2DFDB");
+        colors.add("#C8E6C9");
+        colors.add("#F0F4C3");
+        colors.add("#fff9c4");
+        colors.add("#ffecb3");
+        colors.add("#ffe0b2");
+        colors.add("#d7ccc8");
+        colors.add("#cfd8dc");
+        colors.add("#ffffff");
 
         colorPicker.setColors(colors)
                 .setColumns(5)
@@ -180,7 +189,7 @@ public class CustomDialog {
         pref = context.getSharedPreferences(date, MODE_PRIVATE);
         editor = pref.edit();
         editor.putString(String.valueOf(index), String.valueOf(editName.getText()));
-        editor.putInt(String.valueOf(index) + 1, select);
+        editor.putInt(String.valueOf(index), select);
         editor.commit();
     }
 

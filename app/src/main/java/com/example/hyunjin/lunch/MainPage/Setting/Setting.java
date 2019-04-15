@@ -1,4 +1,4 @@
-package com.example.hyunjin.lunch.MainPage;
+package com.example.hyunjin.lunch.MainPage.Setting;
 
 import androidx.fragment.app.Fragment;
 

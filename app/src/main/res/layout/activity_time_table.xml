@@ -35,13 +35,13 @@
             <TextView
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:background="#BDBDBD"
+                android:background="#C8BDBDBD"
                 android:text="" />
 
             <TextView
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:background="#BDBDBD"
+                android:background="#C8BDBDBD"
                 android:gravity="center"
                 android:text="월"
                 android:textSize="18sp" />
@@ -49,7 +49,7 @@
             <TextView
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:background="#BDBDBD"
+                android:background="#C8BDBDBD"
                 android:gravity="center"
                 android:text="화"
                 android:textSize="18sp" />
@@ -57,7 +57,7 @@
             <TextView
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:background="#BDBDBD"
+                android:background="#C8BDBDBD"
                 android:gravity="center"
                 android:text="수"
                 android:textSize="18sp" />
@@ -65,7 +65,7 @@
             <TextView
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:background="#BDBDBD"
+                android:background="#C8BDBDBD"
                 android:gravity="center"
                 android:text="목"
                 android:textSize="18sp" />
@@ -73,7 +73,7 @@
             <TextView
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:background="#BDBDBD"
+                android:background="#C8BDBDBD"
                 android:gravity="center"
                 android:text="금"
                 android:textSize="18sp" />
