@@ -69,8 +69,8 @@ public class TimeTable extends Fragment {
     }
 
     private void getPreferences(String date, int index) {
+        SharedPreferences pref = getContext().getSharedPreferences(date, Context.MODE_PRIVATE);
         for (int i = 0; i <= 6; i++) {
-            SharedPreferences pref = getContext().getSharedPreferences(date, Context.MODE_PRIVATE);
             if (pref.getString(String.valueOf(i), null) != null)
                 textViews[i][index].setText(pref.getString(String.valueOf(i), null));
             if (pref.getInt(String.valueOf(i), 0) != 0)

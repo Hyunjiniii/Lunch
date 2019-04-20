@@ -137,13 +137,6 @@ public class CustomDialog {
                 }
             }
         });
-//((TextView)view).getText().toString()
-        editName.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
-
-            }
-        });
     }
 
     private void openColorPicker() {
