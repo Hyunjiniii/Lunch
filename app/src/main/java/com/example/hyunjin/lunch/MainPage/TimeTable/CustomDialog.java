@@ -31,13 +31,12 @@ import static android.content.Context.MODE_PRIVATE;
 public class CustomDialog {
     private ArrayList<String> list;
     private Context context;
-    private SharedPreferences pref;
-    private SharedPreferences.Editor editor;
     private Button picker_btn;
     private int select = 0;
     private String text = null;
     private Drawable background = null;
     private AutoCompleteTextView editName;
+    private TextView mainText;
 
     public CustomDialog(Context context) {
         this.context = context;
@@ -49,48 +48,27 @@ public class CustomDialog {
         this.background = background;
     }
 
-    public void callFunction(final TextView null_txt, final TextView textView, final int n, final int m) {
+    public void callFunction(final TextView textView, final int row, final int column) {
         final Dialog dlg = new Dialog(context);
 
         dlg.requestWindowFeature(Window.FEATURE_NO_TITLE);
         dlg.setContentView(R.layout.time_table_custom_dialog);
         dlg.show();
 
-        final Button ok_btn = (Button) dlg.findViewById(R.id.dialog_ok_btn);
-        final TextView mainText = (TextView) dlg.findViewById(R.id.dialog_main_text);
+        mainText = (TextView) dlg.findViewById(R.id.dialog_main_text);
         editName = (AutoCompleteTextView) dlg.findViewById(R.id.dialog_edit);
         picker_btn = (Button) dlg.findViewById(R.id.dialog_color_picker_btn);
 
         list = new ArrayList<String>();
         editName.setAdapter(new ArrayAdapter<String>(context, android.R.layout.simple_dropdown_item_1line, getStringArrayPref(context, "list_json")));
 
-        if (text != null)
-            editName.setText(text);
-        if (background != null) {
-            int color = Color.TRANSPARENT;
-            if (background instanceof ColorDrawable)
-                color = ((ColorDrawable) background).getColor();
-            picker_btn.setBackgroundColor(color);
-        }
+        // 설정해둔 시간표 수정 시 EditText와 배경색상 선택버튼 데이터 설정
+        isData();
 
-        switch (m) {
-            case 0:
-                mainText.setText("월요일   " + String.valueOf(n + 1) + "교시");
-                break;
-            case 1:
-                mainText.setText("화요일   " + String.valueOf(n + 1) + "교시");
-                break;
-            case 2:
-                mainText.setText("수요일   " + String.valueOf(n + 1) + "교시");
-                break;
-            case 3:
-                mainText.setText("목요일   " + String.valueOf(n + 1) + "교시");
-                break;
-            case 4:
-                mainText.setText("금요일   " + String.valueOf(n + 1) + "교시");
-                break;
-        }
+        // 다이얼로그 타이틀 설정
+        setMainText(row, column);
 
+        // 배경색 설정 창 open
         picker_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -98,43 +76,24 @@ public class CustomDialog {
             }
         });
 
+        Button ok_btn = (Button) dlg.findViewById(R.id.dialog_ok_btn);
         ok_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (editName.getText().toString().length() == 0) {
-                    Toast.makeText(context, "과목명을 입력해주세요", Toast.LENGTH_SHORT).show();
-                } else {
-                    switch (m) {
-                        case 0:
-                            set("mon", n);
-                            break;
-                        case 1:
-                            set("tue", n);
-                            break;
-                        case 2:
-                            set("wed", n);
-                            break;
-                        case 3:
-                            set("thu", n);
-                            break;
-                        case 4:
-                            set("fri", n);
-                            break;
-                    }
+                if (editName.getText().toString().length() != 0) {
+                    setPrefData(row, column);
 
-                    pref = context.getSharedPreferences("pref", MODE_PRIVATE);
-                    editor = pref.edit();
-                    editor.putBoolean("NullText", false);
-                    editor.commit();
                     list.add(editName.getText().toString());
                     setStringArrayPref(context, "list_json", list);
 
                     textView.setText(String.valueOf(editName.getText()));
-                    null_txt.setVisibility(View.GONE);
                     if (select != 0)
                         textView.setBackgroundColor(select);
                     dlg.dismiss();
-                }
+
+                } else
+                    Toast.makeText(context, "과목명을 입력해주세요", Toast.LENGTH_SHORT).show();
+
             }
         });
     }
@@ -142,7 +101,6 @@ public class CustomDialog {
     private void openColorPicker() {
         final ColorPicker colorPicker = new ColorPicker((Activity) context);
         ArrayList<String> colors = new ArrayList<>();
-
 
         colors.add("#FFCCBC");
         colors.add("#F8BBD0");
@@ -178,14 +136,15 @@ public class CustomDialog {
                 }).show();
     }
 
-    private void set(String date, int index) {
-        pref = context.getSharedPreferences(date, MODE_PRIVATE);
-        editor = pref.edit();
-        editor.putString(String.valueOf(index), String.valueOf(editName.getText()));
-        editor.putInt(String.valueOf(index), select);
+    private void setPrefData(int row, int column) {
+        SharedPreferences pref = context.getSharedPreferences(Integer.toString(column) + "요일", MODE_PRIVATE);
+        SharedPreferences.Editor editor = pref.edit();
+        editor.putString(Integer.toString(row) + "교시_text", editName.getText().toString());
+        editor.putInt(Integer.toString(row) + "교시_color", select);
         editor.commit();
     }
 
+    // 과목명 자동완성을 위해 list를 preferences에 저장
     private void setStringArrayPref(Context context, String key, ArrayList<String> values) {
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context);
         SharedPreferences.Editor editor = prefs.edit();
@@ -217,6 +176,40 @@ public class CustomDialog {
             }
         }
         return urls;
+    }
+
+    private void isData() {
+        // 이미 과목명이 있는 경우 EditText에 넣어줌
+        if (text != null)
+            editName.setText(text);
+
+        // 이미 배경색이 있는 경우 배경색 선택 버튼에 색상 설정
+        if (background != null) {
+            int color = Color.TRANSPARENT;
+            if (background instanceof ColorDrawable)
+                color = ((ColorDrawable) background).getColor();
+            picker_btn.setBackgroundColor(color);
+        }
+    }
+
+    private void setMainText(int row, int column) {
+        switch (column) {
+            case 0:
+                mainText.setText("월요일   " + String.valueOf(row + 1) + "교시");
+                break;
+            case 1:
+                mainText.setText("화요일   " + String.valueOf(row + 1) + "교시");
+                break;
+            case 2:
+                mainText.setText("수요일   " + String.valueOf(row + 1) + "교시");
+                break;
+            case 3:
+                mainText.setText("목요일   " + String.valueOf(row + 1) + "교시");
+                break;
+            case 4:
+                mainText.setText("금요일   " + String.valueOf(row + 1) + "교시");
+                break;
+        }
     }
 
 }
