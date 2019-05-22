@@ -3,15 +3,5 @@
     <color name="colorPrimary">#e3ff6285</color>
     <color name="colorPrimaryDark">#ce4867</color>
     <color name="colorAccent">#F44336</color>
-    <color name="radio1">#F44336</color>
-    <color name="radio2">#F179A2</color>
-    <color name="radio3">#809C27B0</color>
-    <color name="radio4">#803F51B5</color>
-    <color name="radio5">#802196F3</color>
-    <color name="radio6">#80009688</color>
-    <color name="radio7">#808BC34A</color>
-    <color name="radio8">#80FFEB3B</color>
-    <color name="radio9">#80FF9800</color>
-    <color name="radio10">#80FF2282</color>
 
 </resources>

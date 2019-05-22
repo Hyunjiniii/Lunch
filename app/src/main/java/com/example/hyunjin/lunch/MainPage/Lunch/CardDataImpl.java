@@ -1,7 +1,6 @@
 package com.example.hyunjin.lunch.MainPage.Lunch;
 
 import android.content.Context;
-import android.util.Log;
 
 import com.example.hyunjin.lunch.Meal.BapTool;
 import com.example.hyunjin.lunch.Meal.ProcessTask;
