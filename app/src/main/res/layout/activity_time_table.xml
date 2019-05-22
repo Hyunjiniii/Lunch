@@ -362,4 +362,62 @@
 
         </TableRow>
     </TableLayout>
+
+    <View
+        android:id="@+id/view1"
+        app:layout_constraintHorizontal_chainStyle="spread_inside"
+        android:layout_width="1dp"
+        android:layout_height="match_parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toLeftOf="@+id/view2" />
+
+    <View
+        android:id="@+id/view2"
+        android:layout_width="1dp"
+        android:layout_height="match_parent"
+        android:background="#A0A0A0"
+        app:layout_constraintLeft_toRightOf="@+id/view1"
+        app:layout_constraintRight_toLeftOf="@+id/view3" />
+
+    <View
+        android:id="@+id/view3"
+        android:layout_width="1dp"
+        android:layout_height="match_parent"
+        android:background="#A0A0A0"
+        app:layout_constraintLeft_toRightOf="@+id/view2"
+        app:layout_constraintRight_toLeftOf="@+id/view4" />
+
+    <View
+        android:id="@+id/view4"
+        android:layout_width="1dp"
+        android:layout_height="match_parent"
+        android:background="#A0A0A0"
+        app:layout_constraintLeft_toRightOf="@+id/view3"
+        app:layout_constraintRight_toLeftOf="@+id/view5" />
+
+    <View
+        android:id="@+id/view5"
+        android:layout_width="1dp"
+        android:layout_height="match_parent"
+        android:background="#A0A0A0"
+        app:layout_constraintLeft_toRightOf="@+id/view4"
+        app:layout_constraintRight_toLeftOf="@+id/view6" />
+
+    <View
+        android:id="@+id/view6"
+        android:layout_width="1dp"
+        android:layout_height="match_parent"
+        android:background="#A0A0A0"
+        app:layout_constraintLeft_toRightOf="@+id/view5"
+        app:layout_constraintRight_toLeftOf="@+id/view7" />
+
+
+    <View
+        android:id="@+id/view7"
+        android:layout_width="1dp"
+        android:layout_height="match_parent"
+        app:layout_constraintLeft_toRightOf="@+id/view6"
+        app:layout_constraintRight_toRightOf="parent" />
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>

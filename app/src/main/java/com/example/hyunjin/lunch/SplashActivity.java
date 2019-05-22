@@ -17,6 +17,7 @@ public class SplashActivity extends AppCompatActivity {
 
         LottieAnimationView lottie = (LottieAnimationView) findViewById(R.id.splash_lottie);
         lottie.playAnimation();
+        lottie.loop(true);
 
         Handler handler = new Handler();
         handler.postDelayed(new splashhandler(), 5000);
