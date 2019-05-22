@@ -1,12 +1,16 @@
 package com.example.hyunjin.lunch_center_item;
 
+import android.app.PendingIntent;
 import android.appwidget.AppWidgetManager;
 import android.appwidget.AppWidgetProvider;
+import android.content.ComponentName;
 import android.content.Context;
+import android.content.Intent;
 import android.util.Log;
 import android.widget.RemoteViews;
 import android.widget.TextView;
 
+import com.example.hyunjin.lunch.MainActivity;
 import com.example.hyunjin.lunch.MainPage.Lunch.CardDataImpl;
 import com.example.hyunjin.lunch.Meal.BapTool;
 import com.example.hyunjin.lunch.Meal.ProcessTask;
@@ -36,6 +40,13 @@ public class AppWidget extends AppWidgetProvider {
         RemoteViews views = new RemoteViews(context.getPackageName(), R.layout.app_widget);
         views.setTextViewText(R.id.appwidget_text, mData.Lunch);
         views.setTextViewText(R.id.appwidget_date, mData.Calender + " " + mData.DayOfTheWeek);
+
+        // 위젯 클릭 시 MainActivity 실행
+        Intent intent = new Intent(Intent.ACTION_MAIN);
+        intent.addCategory(Intent.CATEGORY_LAUNCHER);
+        intent.setComponent(new ComponentName(context, MainActivity.class));
+        PendingIntent pi = PendingIntent.getActivity(context, 0, intent, 0);
+        views.setOnClickPendingIntent(R.id.appwidget_text, pi);
 
         // Instruct the widget manager to update the widget
         appWidgetManager.updateAppWidget(appWidgetId, views);

@@ -16,8 +16,6 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        getSupportActionBar().setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
-        getSupportActionBar().setCustomView(R.layout.main_actionbar);
         setContentView(R.layout.activity_main);
 
         AdView mAdView = (AdView) findViewById(R.id.adView);
