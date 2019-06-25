@@ -8,6 +8,7 @@ import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
 import android.preference.PreferenceManager;
+import android.util.Log;
 import android.view.View;
 import android.view.Window;
 import android.widget.AdapterView;
@@ -35,7 +36,7 @@ public class CustomDialog {
     private int select = 0;
     private String text = null;
     private Drawable background = null;
-    private AutoCompleteTextView editName;
+    private AutoCompleteTextView textInput;
     private TextView mainText;
 
     public CustomDialog(Context context) {
@@ -56,11 +57,11 @@ public class CustomDialog {
         dlg.show();
 
         mainText = (TextView) dlg.findViewById(R.id.dialog_main_text);
-        editName = (AutoCompleteTextView) dlg.findViewById(R.id.dialog_edit);
+        textInput = (AutoCompleteTextView) dlg.findViewById(R.id.dialog_edit);
         picker_btn = (Button) dlg.findViewById(R.id.dialog_color_picker_btn);
 
         list = new ArrayList<String>();
-        editName.setAdapter(new ArrayAdapter<String>(context, android.R.layout.simple_dropdown_item_1line, getStringArrayPref(context, "list_json")));
+        textInput.setAdapter(new ArrayAdapter<String>(context, android.R.layout.simple_dropdown_item_1line, getStringArrayPref(context, "list_json")));
 
         // 설정해둔 시간표 수정 시 EditText와 배경색상 선택버튼 데이터 설정
         isData();
@@ -80,13 +81,13 @@ public class CustomDialog {
         ok_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (editName.getText().toString().length() != 0) {
+                if (textInput.getText().toString().length() != 0) {
                     setPrefData(row, column);
 
-                    list.add(editName.getText().toString());
+                    list.add(textInput.getText().toString());
                     setStringArrayPref(context, "list_json", list);
 
-                    textView.setText(String.valueOf(editName.getText()));
+                    textView.setText(String.valueOf(textInput.getText()));
                     if (select != 0)
                         textView.setBackgroundColor(select);
                     dlg.dismiss();
@@ -94,6 +95,29 @@ public class CustomDialog {
                 } else
                     Toast.makeText(context, "과목명을 입력해주세요", Toast.LENGTH_SHORT).show();
 
+            }
+        });
+
+        textInput.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                String input_text = ((TextView)view).getText().toString();
+                Log.d("Clicked_Item : ", input_text);
+
+                for (int column = 0; column <= 4; column++) {
+                    SharedPreferences inner_pref = context.getSharedPreferences(column + "요일", MODE_PRIVATE);
+                    for (int row = 0; row <= 6; row++) {
+                        String prefString = inner_pref.getString(row + "교시_text", null);
+
+                        if (prefString != null && prefString.equals(input_text)) {
+                            text = inner_pref.getString(row + "교시_text", null);
+                            select = inner_pref.getInt(row + "교시_color", 0);
+                            picker_btn.setBackgroundColor(select);
+                            setPrefData(row, column);
+                            break;
+                        }
+                    }
+                }
             }
         });
     }
@@ -124,7 +148,6 @@ public class CustomDialog {
                 .setOnChooseColorListener(new ColorPicker.OnChooseColorListener() {
                     @Override
                     public void onChooseColor(int position, int color) {
-                        Toast.makeText(context, String.valueOf(color), Toast.LENGTH_SHORT).show();
                         picker_btn.setBackgroundColor(color);
                         select = color;
                     }
@@ -137,10 +160,10 @@ public class CustomDialog {
     }
 
     private void setPrefData(int row, int column) {
-        SharedPreferences pref = context.getSharedPreferences(Integer.toString(column) + "요일", MODE_PRIVATE);
+        SharedPreferences pref = context.getSharedPreferences(column + "요일", MODE_PRIVATE);
         SharedPreferences.Editor editor = pref.edit();
-        editor.putString(Integer.toString(row) + "교시_text", editName.getText().toString());
-        editor.putInt(Integer.toString(row) + "교시_color", select);
+        editor.putString(row + "교시_text", textInput.getText().toString());
+        editor.putInt(row + "교시_color", select);
         editor.commit();
     }
 
@@ -181,7 +204,7 @@ public class CustomDialog {
     private void isData() {
         // 이미 과목명이 있는 경우 EditText에 넣어줌
         if (text != null)
-            editName.setText(text);
+            textInput.setText(text);
 
         // 이미 배경색이 있는 경우 배경색 선택 버튼에 색상 설정
         if (background != null) {
@@ -195,19 +218,19 @@ public class CustomDialog {
     private void setMainText(int row, int column) {
         switch (column) {
             case 0:
-                mainText.setText("월요일   " + String.valueOf(row + 1) + "교시");
+                mainText.setText("월요일   " + (row + 1) + "교시");
                 break;
             case 1:
-                mainText.setText("화요일   " + String.valueOf(row + 1) + "교시");
+                mainText.setText("화요일   " + (row + 1) + "교시");
                 break;
             case 2:
-                mainText.setText("수요일   " + String.valueOf(row + 1) + "교시");
+                mainText.setText("수요일   " + (row + 1) + "교시");
                 break;
             case 3:
-                mainText.setText("목요일   " + String.valueOf(row + 1) + "교시");
+                mainText.setText("목요일   " + (row + 1) + "교시");
                 break;
             case 4:
-                mainText.setText("금요일   " + String.valueOf(row + 1) + "교시");
+                mainText.setText("금요일   " + (row + 1) + "교시");
                 break;
         }
     }

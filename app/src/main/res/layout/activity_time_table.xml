@@ -16,12 +16,14 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <TableRow
+            android:background="#A0A0A0"
             android:layout_height="0dp"
             android:layout_weight="1">
 
             <TextView
                 android:layout_height="match_parent"
                 android:layout_weight="1"
+                android:layout_margin="1dp"
                 android:background="#C8BDBDBD"
                 android:text="" />
 
@@ -30,6 +32,7 @@
                 android:layout_weight="1"
                 android:background="#C8BDBDBD"
                 android:gravity="center"
+                android:layout_margin="1dp"
                 android:text="월"
                 android:textSize="18sp" />
 
@@ -38,6 +41,7 @@
                 android:layout_weight="1"
                 android:background="#C8BDBDBD"
                 android:gravity="center"
+                android:layout_margin="1dp"
                 android:text="화"
                 android:textSize="18sp" />
 
@@ -46,6 +50,7 @@
                 android:layout_weight="1"
                 android:background="#C8BDBDBD"
                 android:gravity="center"
+                android:layout_margin="1dp"
                 android:text="수"
                 android:textSize="18sp" />
 
@@ -54,6 +59,7 @@
                 android:layout_weight="1"
                 android:background="#C8BDBDBD"
                 android:gravity="center"
+                android:layout_margin="1dp"
                 android:text="목"
                 android:textSize="18sp" />
 
@@ -61,60 +67,65 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:background="#C8BDBDBD"
+                android:layout_margin="1dp"
                 android:gravity="center"
                 android:text="금"
                 android:textSize="18sp" />
         </TableRow>
 
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:background="#A0A0A0" />
 
         <TableRow
+            android:background="#A0A0A0"
             android:layout_height="0dp"
             android:layout_weight="1">
 
             <TextView
                 android:layout_height="match_parent"
                 android:background="#BCE2E2E2"
+                android:layout_margin="1dp"
                 android:gravity="center"
                 android:text="1"
                 android:textSize="24sp" />
 
             <TextView
+                android:background="#ffffff"
+                android:layout_margin="1dp"
                 android:id="@+id/mon1"
                 android:layout_height="match_parent"
                 android:gravity="center" />
 
             <TextView
+                android:background="#ffffff"
+                android:layout_margin="1dp"
                 android:id="@+id/tue1"
                 android:layout_height="match_parent"
                 android:gravity="center" />
 
             <TextView
+                android:background="#ffffff"
+                android:layout_margin="1dp"
                 android:id="@+id/wed1"
                 android:layout_height="match_parent"
                 android:gravity="center" />
 
             <TextView
+                android:background="#ffffff"
+                android:layout_margin="1dp"
                 android:id="@+id/thu1"
                 android:layout_height="match_parent"
                 android:gravity="center" />
 
             <TextView
+                android:background="#ffffff"
+                android:layout_margin="1dp"
                 android:id="@+id/fri1"
                 android:layout_height="match_parent"
                 android:gravity="center" />
         </TableRow>
 
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:background="#A0A0A0" />
-
 
         <TableRow
+            android:background="#A0A0A0"
             android:layout_height="0dp"
             android:layout_weight="1">
 
@@ -126,41 +137,48 @@
                 android:textSize="24sp" />
 
             <TextView
+                android:background="#ffffff"
+                android:layout_margin="1dp"
                 android:id="@+id/mon2"
                 android:layout_height="match_parent"
                 android:gravity="center" />
 
             <TextView
+                android:background="#ffffff"
+                android:layout_margin="1dp"
                 android:id="@+id/tue2"
                 android:layout_height="match_parent"
                 android:gravity="center" />
 
             <TextView
+                android:background="#ffffff"
+                android:layout_margin="1dp"
                 android:id="@+id/wed2"
                 android:layout_height="match_parent"
                 android:gravity="center" />
 
             <TextView
+                android:background="#ffffff"
+                android:layout_margin="1dp"
                 android:id="@+id/thu2"
                 android:layout_height="match_parent"
                 android:gravity="center" />
 
             <TextView
+                android:background="#ffffff"
+                android:layout_margin="1dp"
                 android:id="@+id/fri2"
                 android:layout_height="match_parent"
                 android:gravity="center" />
         </TableRow>
 
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:background="#A0A0A0" />
-
         <TableRow
+            android:background="#A0A0A0"
             android:layout_height="0dp"
             android:layout_weight="1">
 
             <TextView
+                android:layout_margin="1dp"
                 android:layout_height="match_parent"
                 android:background="#BCE2E2E2"
                 android:gravity="center"
@@ -168,41 +186,48 @@
                 android:textSize="24sp" />
 
             <TextView
+                android:background="#ffffff"
+                android:layout_margin="1dp"
                 android:id="@+id/mon3"
                 android:layout_height="match_parent"
                 android:gravity="center" />
 
             <TextView
+                android:background="#ffffff"
+                android:layout_margin="1dp"
                 android:id="@+id/tue3"
                 android:layout_height="match_parent"
                 android:gravity="center" />
 
             <TextView
+                android:background="#ffffff"
+                android:layout_margin="1dp"
                 android:id="@+id/wed3"
                 android:layout_height="match_parent"
                 android:gravity="center" />
 
             <TextView
+                android:background="#ffffff"
+                android:layout_margin="1dp"
                 android:id="@+id/thu3"
                 android:layout_height="match_parent"
                 android:gravity="center" />
 
             <TextView
+                android:background="#ffffff"
+                android:layout_margin="1dp"
                 android:id="@+id/fri3"
                 android:layout_height="match_parent"
                 android:gravity="center" />
         </TableRow>
 
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:background="#A0A0A0" />
-
         <TableRow
+            android:background="#A0A0A0"
             android:layout_height="0dp"
             android:layout_weight="1">
 
             <TextView
+                android:layout_margin="1dp"
                 android:layout_height="match_parent"
                 android:background="#BCE2E2E2"
                 android:gravity="center"
@@ -210,41 +235,48 @@
                 android:textSize="24sp" />
 
             <TextView
+                android:background="#ffffff"
+                android:layout_margin="1dp"
                 android:id="@+id/mon4"
                 android:layout_height="match_parent"
                 android:gravity="center" />
 
             <TextView
+                android:background="#ffffff"
+                android:layout_margin="1dp"
                 android:id="@+id/tue4"
                 android:layout_height="match_parent"
                 android:gravity="center" />
 
             <TextView
+                android:background="#ffffff"
+                android:layout_margin="1dp"
                 android:id="@+id/wed4"
                 android:layout_height="match_parent"
                 android:gravity="center" />
 
             <TextView
+                android:background="#ffffff"
+                android:layout_margin="1dp"
                 android:id="@+id/thu4"
                 android:layout_height="match_parent"
                 android:gravity="center" />
 
             <TextView
+                android:background="#ffffff"
+                android:layout_margin="1dp"
                 android:id="@+id/fri4"
                 android:layout_height="match_parent"
                 android:gravity="center" />
         </TableRow>
 
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:background="#A0A0A0" />
-
         <TableRow
+            android:background="#A0A0A0"
             android:layout_height="0dp"
             android:layout_weight="1">
 
             <TextView
+                android:layout_margin="1dp"
                 android:layout_height="match_parent"
                 android:background="#BCE2E2E2"
                 android:gravity="center"
@@ -252,41 +284,48 @@
                 android:textSize="24sp" />
 
             <TextView
+                android:background="#ffffff"
+                android:layout_margin="1dp"
                 android:id="@+id/mon5"
                 android:layout_height="match_parent"
                 android:gravity="center" />
 
             <TextView
+                android:background="#ffffff"
+                android:layout_margin="1dp"
                 android:id="@+id/tue5"
                 android:layout_height="match_parent"
                 android:gravity="center" />
 
             <TextView
+                android:background="#ffffff"
+                android:layout_margin="1dp"
                 android:id="@+id/wed5"
                 android:layout_height="match_parent"
                 android:gravity="center" />
 
             <TextView
+                android:background="#ffffff"
+                android:layout_margin="1dp"
                 android:id="@+id/thu5"
                 android:layout_height="match_parent"
                 android:gravity="center" />
 
             <TextView
+                android:background="#ffffff"
+                android:layout_margin="1dp"
                 android:id="@+id/fri5"
                 android:layout_height="match_parent"
                 android:gravity="center" />
         </TableRow>
 
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:background="#A0A0A0" />
-
         <TableRow
+            android:background="#A0A0A0"
             android:layout_height="0dp"
             android:layout_weight="1">
 
             <TextView
+                android:layout_margin="1dp"
                 android:layout_height="match_parent"
                 android:background="#BCE2E2E2"
                 android:gravity="center"
@@ -294,41 +333,48 @@
                 android:textSize="24sp" />
 
             <TextView
+                android:background="#ffffff"
+                android:layout_margin="1dp"
                 android:id="@+id/mon6"
                 android:layout_height="match_parent"
                 android:gravity="center" />
 
             <TextView
+                android:background="#ffffff"
+                android:layout_margin="1dp"
                 android:id="@+id/tue6"
                 android:layout_height="match_parent"
                 android:gravity="center" />
 
             <TextView
+                android:background="#ffffff"
+                android:layout_margin="1dp"
                 android:id="@+id/wed6"
                 android:layout_height="match_parent"
                 android:gravity="center" />
 
             <TextView
+                android:background="#ffffff"
+                android:layout_margin="1dp"
                 android:id="@+id/thu6"
                 android:layout_height="match_parent"
                 android:gravity="center" />
 
             <TextView
+                android:background="#ffffff"
+                android:layout_margin="1dp"
                 android:id="@+id/fri6"
                 android:layout_height="match_parent"
                 android:gravity="center" />
         </TableRow>
 
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:background="#A0A0A0" />
-
         <TableRow
+            android:background="#A0A0A0"
             android:layout_height="0dp"
             android:layout_weight="1">
 
             <TextView
+                android:layout_margin="1dp"
                 android:layout_height="match_parent"
                 android:background="#BCE2E2E2"
                 android:gravity="center"
@@ -336,88 +382,42 @@
                 android:textSize="24sp" />
 
             <TextView
+                android:background="#ffffff"
+                android:layout_margin="1dp"
                 android:id="@+id/mon7"
                 android:layout_height="match_parent"
                 android:gravity="center" />
 
             <TextView
+                android:background="#ffffff"
+                android:layout_margin="1dp"
                 android:id="@+id/tue7"
                 android:layout_height="match_parent"
                 android:gravity="center" />
 
             <TextView
+                android:background="#ffffff"
+                android:layout_margin="1dp"
                 android:id="@+id/wed7"
                 android:layout_height="match_parent"
                 android:gravity="center" />
 
             <TextView
+                android:background="#ffffff"
+                android:layout_margin="1dp"
                 android:id="@+id/thu7"
                 android:layout_height="match_parent"
                 android:gravity="center" />
 
             <TextView
+                android:background="#ffffff"
+                android:layout_margin="1dp"
                 android:id="@+id/fri7"
                 android:layout_height="match_parent"
                 android:gravity="center" />
 
         </TableRow>
     </TableLayout>
-
-    <View
-        android:id="@+id/view1"
-        app:layout_constraintHorizontal_chainStyle="spread_inside"
-        android:layout_width="1dp"
-        android:layout_height="match_parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toLeftOf="@+id/view2" />
-
-    <View
-        android:id="@+id/view2"
-        android:layout_width="1dp"
-        android:layout_height="match_parent"
-        android:background="#A0A0A0"
-        app:layout_constraintLeft_toRightOf="@+id/view1"
-        app:layout_constraintRight_toLeftOf="@+id/view3" />
-
-    <View
-        android:id="@+id/view3"
-        android:layout_width="1dp"
-        android:layout_height="match_parent"
-        android:background="#A0A0A0"
-        app:layout_constraintLeft_toRightOf="@+id/view2"
-        app:layout_constraintRight_toLeftOf="@+id/view4" />
-
-    <View
-        android:id="@+id/view4"
-        android:layout_width="1dp"
-        android:layout_height="match_parent"
-        android:background="#A0A0A0"
-        app:layout_constraintLeft_toRightOf="@+id/view3"
-        app:layout_constraintRight_toLeftOf="@+id/view5" />
-
-    <View
-        android:id="@+id/view5"
-        android:layout_width="1dp"
-        android:layout_height="match_parent"
-        android:background="#A0A0A0"
-        app:layout_constraintLeft_toRightOf="@+id/view4"
-        app:layout_constraintRight_toLeftOf="@+id/view6" />
-
-    <View
-        android:id="@+id/view6"
-        android:layout_width="1dp"
-        android:layout_height="match_parent"
-        android:background="#A0A0A0"
-        app:layout_constraintLeft_toRightOf="@+id/view5"
-        app:layout_constraintRight_toLeftOf="@+id/view7" />
-
-
-    <View
-        android:id="@+id/view7"
-        android:layout_width="1dp"
-        android:layout_height="match_parent"
-        app:layout_constraintLeft_toRightOf="@+id/view6"
-        app:layout_constraintRight_toRightOf="parent" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
